@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media App</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- jQueryUI CDN -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+        integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+
+<body>
+    <div id="choiceLP">
+        <div class="LP-container">
+            <div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module">
+    import {musicData} from "../data/data.js"
+
+    console.log(musicData)
+    // jQuery UI
+    // Sortable List
+    $('#list').sortable()
+    // Droppable
+    $('#current_image').draggable({
+        revert: true    // 원래 위치로 되돌리기
+    })
+    $('#list > div').droppable({
+        drop: function (event, ui) {
+            console.log(ui) // drag한 객체
+            console.log(this) // drop 영역의 객체
+            $(this).click()
+        }
+    })
+</script>
+
+</html>
