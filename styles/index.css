@@ -61,3 +61,21 @@
     left: 780px;
     background-color: aliceblue;
 }
+
+#descriptionContainer{
+    background-color:gray;
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    right: 0;
+    top: 20%;
+}
+
+.LP-container li{
+    list-style-type: none;
+}
+
+.LP-container img{
+    width: 80px;
+    height: 80px;
+}

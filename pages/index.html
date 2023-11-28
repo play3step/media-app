@@ -21,33 +21,62 @@
         <div class="LP-container">
             <div id="draggable">
                 <div class="theme1">
-                    테마 1
+                    <ul>
+                        <li>
+                            <img src="../png/lp.png" data-theme="1">
+                        </li>
+                        <li>
+                            <img src="../png/lp.png" data-theme="2">
+                        </li>
+                    </ul>
                 </div>
                 <div class="theme2">
-                    테마 2
+                    <ul>
+                        <li>
+                            <img src="../png/lp.png" data-theme="3">
+                        </li>
+                        <li>
+                            <img src="../png/lp.png" data-theme="4">
+                        </li>
+                    </ul>
                 </div>
                 <div class="theme3">
-                    테마 3
+                    <ul>
+                        <li>
+                            <img src="../png/lp.png" data-theme="5">
+                        </li>
+                        <li>
+                            <img src="../png/lp.png" data-theme="6">
+                        </li>
+                    </ul>
                 </div>
                 <div class="theme4">
-                    테마 4
+                    <ul>
+                        <li>
+                            <img src="../png/lp.png" data-theme="7">
+                        </li>
+                        <li>
+                            <img src="../png/lp.png" data-theme="8">
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="turnTables" class="ui-widget-header">
-        <p>턴테이블 위치</p>
-    </div>
+        <div id="descriptionContainer">
+
+        </div>
+        <div id="turnTables" class="ui-widget-header">
+            <p>턴테이블 위치</p>
+        </div>
     </div>
 </body>
 <script type="module">
     import { musicData } from "../data/data.js"
 
-    console.log(musicData)
-
-    $("#draggable div").draggable({
+    $("#draggable img").draggable({
         revert: true    // 원래 위치로 되돌리기
     })
+
     $("#turnTables").droppable({
         drop: function (event, ui) {
             $(this)
@@ -56,6 +85,30 @@
                 .html("재생");
         }
     });
+
+    $("#draggable img").on({
+        mouseenter: function () {
+            var themeNumber = $(this).data("theme");
+            var themeDescription = getThemeDescription(themeNumber);
+            $("#descriptionContainer").html("<p>" + themeDescription + "</p>").show();
+        },
+        mousedown: function () {
+            $("#descriptionContainer").hide();
+        },
+        mouseleave: function () {
+            $("#descriptionContainer").hide();
+        }
+    });
+
+    function getThemeDescription(themeNumber) {
+        var theme = musicData[themeNumber - 1];
+
+        if (theme) {
+            return theme.title;
+        } else {
+            return "테마에 대한 설명이 없습니다.";
+        }
+    }
 </script>
 
 </html>
