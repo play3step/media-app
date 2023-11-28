@@ -19,30 +19,43 @@
 <body>
     <div id="choiceLP">
         <div class="LP-container">
-            <div>
-                
+            <div id="draggable">
+                <div class="theme1">
+                    테마 1
+                </div>
+                <div class="theme2">
+                    테마 2
+                </div>
+                <div class="theme3">
+                    테마 3
+                </div>
+                <div class="theme4">
+                    테마 4
+                </div>
             </div>
         </div>
     </div>
+    <div id="turnTables" class="ui-widget-header">
+        <p>턴테이블 위치</p>
+    </div>
+    </div>
 </body>
 <script type="module">
-    import {musicData} from "../data/data.js"
+    import { musicData } from "../data/data.js"
 
     console.log(musicData)
-    // jQuery UI
-    // Sortable List
-    $('#list').sortable()
-    // Droppable
-    $('#current_image').draggable({
+
+    $("#draggable div").draggable({
         revert: true    // 원래 위치로 되돌리기
     })
-    $('#list > div').droppable({
+    $("#turnTables").droppable({
         drop: function (event, ui) {
-            console.log(ui) // drag한 객체
-            console.log(this) // drop 영역의 객체
-            $(this).click()
+            $(this)
+                .addClass("ui-state-highlight")
+                .find("p")
+                .html("재생");
         }
-    })
+    });
 </script>
 
 </html>
