@@ -1,146 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media App</title>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/record.css">
 
 </head>
+
 <body>
-    <div id = "wrap">
+    <div id="wrap">
         <div id="background_img">
-        <div id ="album_info">
-            <img id="current_image" width="200px" />
-            <h1 id="current_title">Title</h1>
-        </div>
-        <h2 id="current_progress">Progress</h2>
-        <div id="current_bar" style="width: 1920px; height: 30px; border: 1px solid rgb(255, 0, 0);">
-            <div style="background-color: rgb(255, 0, 0); width: 1920; height: 30px;"></div>
-        </div>
-        <div id ="controller_box">
-            <div id ="music_controller">
-                <button id="btn_prev">
-                    <img src = "../png/skip_previous.png">
-                </button>
-                <button id="btn_play">
-                    <img src = "../png/play_arrow.png" >
-                </button>
-                <button id="btn_next">
-                    <img src="../png/skip_next.png">
-                </button>
-            </div> 
-        </div>
-     
-       <div id="play_list"></div>
+            <div id="album_info">
+                <img id="current_image" width="200px" />
+                <h1 id="current_title">Title</h1>
+            </div>
+            <h2 id="current_progress">Progress</h2>
+            <div id="current_bar" style="width: 1920px; height: 30px; border: 1px solid rgb(255, 0, 0);">
+                <div style="background-color: rgb(255, 0, 0); width: 1920; height: 30px;"></div>
+            </div>
+            <div id="controller_box">
+                <div id="music_controller">
+                    <button id="btn_prev">
+                        <img src="../png/skip_previous.png">
+                    </button>
+                    <button id="btn_play">
+                        <img src="../png/play_arrow.png">
+                    </button>
+                    <button id="btn_next">
+                        <img src="../png/skip_next.png">
+                    </button>
+                </div>
+            </div>
+
+            <div id="play_list"></div>
         </div>
     </div>
-    
+
 </body>
 <script>
-// 재생 목록 데이터
-let audios = [
-    {
-        audio: '../musics/00.mp3',
-        image: '../musics/00.png',
-        title: 'First Song',
-        author: 'First Author'
-    },
-    {
-        audio: '../musics/01.mp3',
-        image: '../musics/01.png',
-        title: 'Second Song',
-        author: 'Second Author'
-    },
-    {
-        audio: '../musics/02.mp3',
-        image: '../musics/02.png',
-        title: 'Third Song',
-        author: 'Third Author'
+    // 재생 목록 데이터
+    let audios = [
+        {
+            audio: '../musics/00.mp3',
+            image: '../musics/00.png',
+            title: 'First Song',
+            author: 'First Author'
+        },
+        {
+            audio: '../musics/01.mp3',
+            image: '../musics/01.png',
+            title: 'Second Song',
+            author: 'Second Author'
+        },
+        {
+            audio: '../musics/02.mp3',
+            image: '../musics/02.png',
+            title: 'Third Song',
+            author: 'Third Author'
+        }
+    ]
+
+    // 현재 재생중인 오디오
+    let currentAudio = new Audio()
+
+    // 리스트에 추가
+    for (let i in audios) {
+        // 오디오 정보 변수
+        let audio = new Audio(audios[i].audio)
+        let image = audios[i].image
+        let title = audios[i].title
+        let author = audios[i].author
+
+        let dom = $('<div></div>')
+        dom.append('<p>' + author + ' - ' + title + '</p>')
+        dom.append('<img src="' + image + '" width="100px">')
+        dom.append(audio)
+
+        // DOM 클릭 이벤트
+        dom.click(function () {
+            currentAudio.pause()
+            currentAudio = audio
+            currentAudio.currentTime = 0;
+            currentAudio.play()
+
+            $(this).siblings().removeClass('playing')
+            $(this).addClass('playing')
+
+            $('#current_image').attr('src', image);
+            $('#current_title').text(author + ' - ' + title)
+        })
+
+        $('#play_list').append(dom)
     }
-]
 
-// 현재 재생중인 오디오
-let currentAudio = new Audio()
+    // 현재 재생 기본 값 (0번 곡 자동으로 지정)
+    $('#play_list > div').eq(0).click();
+    currentAudio.pause()
 
-// 리스트에 추가
-for(let i in audios){
-    // 오디오 정보 변수
-    let audio   = new Audio(audios[i].audio)
-    let image   = audios[i].image
-    let title   = audios[i].title
-    let author  = audios[i].author
+    // 현재 시간 얻기
+    setInterval(function () {
+        $('#current_progress').text(currentAudio.currentTime + '/' + currentAudio.duration);
 
-    let dom = $('<div></div>')
-    dom.append('<p>' + author + ' - ' + title + '</p>')
-    dom.append('<img src="' + image + '" width="100px">')
-    dom.append(audio)
+        let barWidth = $('#current_bar').innerWidth();
+        $('#current_bar > div').css('width', barWidth * currentAudio.currentTime / currentAudio.duration)
+    }, 50)
 
-    // DOM 클릭 이벤트
-    dom.click(function(){
-        currentAudio.pause()
-        currentAudio = audio
-        currentAudio.currentTime = 0;
-        currentAudio.play()
-
-        $(this).siblings().removeClass('playing')
-        $(this).addClass('playing')
-
-        $('#current_image').attr('src', image);
-        $('#current_title').text(author + ' - ' + title)
+    // 버튼 이벤트
+    $('#btn_play').click(function () { // 재생/일시정지
+        if (currentAudio.paused == true) {
+            currentAudio.play()
+        }
+        else {
+            currentAudio.pause()
+        }
     })
 
-    $('#play_list').append(dom)
-}
-    
-// 현재 재생 기본 값 (0번 곡 자동으로 지정)
-$('#play_list > div').eq(0).click();
-currentAudio.pause()
-
-// 현재 시간 얻기
-setInterval(function(){
-    $('#current_progress').text(currentAudio.currentTime + '/' + currentAudio.duration);
-
-    let barWidth = $('#current_bar').innerWidth();
-    $('#current_bar > div').css('width', barWidth * currentAudio.currentTime / currentAudio.duration )
-}, 50)
-
-// 버튼 이벤트
-$('#btn_play').click(function(){ // 재생/일시정지
-    if(currentAudio.paused == true){
-        currentAudio.play()
-    }
-    else{
+    $('#btn_stop').click(function () { // 완전 정지
         currentAudio.pause()
-    }
-})
+        currentAudio.currentTime = 0
+    })
 
-$('#btn_stop').click(function(){ // 완전 정지
-    currentAudio.pause()
-    currentAudio.currentTime = 0
-})
+    $('#btn_prev').click(function () { // 이전곡
+        let index = $(currentAudio).parent().index()
+        $('#list > div').eq((index - 1) % audios.length).click()
+    })
 
-$('#btn_prev').click(function(){ // 이전곡
-    let index = $(currentAudio).parent().index()
-    $('#list > div').eq( (index - 1) % audios.length ).click()
-})
+    $('#btn_next').click(function () { // 다음곡
+        let index = $(currentAudio).parent().index()
+        $('#list > div').eq((index + 1) % audios.length).click()
+    })
 
-$('#btn_next').click(function(){ // 다음곡
-    let index = $(currentAudio).parent().index()
-    $('#list > div').eq( (index + 1) % audios.length ).click()
-})
+    $('#btn_p10').click(function () { // 10초 후
+        currentAudio.currentTime += 10
+    })
 
-$('#btn_p10').click(function(){ // 10초 후
-    currentAudio.currentTime += 10
-})
-
-$('#btn_m10').click(function(){ // 10초 전
-    currentAudio.currentTime -= 10
-})
+    $('#btn_m10').click(function () { // 10초 전
+        currentAudio.currentTime -= 10
+    })
 
 
 </script>
+
 </html>

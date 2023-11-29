@@ -23,6 +23,8 @@
     padding: 0.5em;
     float: left;
     margin: 10px 10px 10px 0;
+    z-index: 1;
+
 }
 
 #turnTables {
@@ -38,28 +40,29 @@
     width: 100px;
     height: 300px;
     left: 180px;
-    background-color: aliceblue;
 }
 .theme2{
     position: absolute;
     width: 100px;
     height: 300px;
     left: 380px;
-    background-color: aliceblue;
 }
 .theme3{
     position: absolute;
     width: 100px;
     height: 300px;
     left: 580px;
-    background-color: aliceblue;
+
 }
 .theme4{
     position: absolute;
     width: 100px;
     height: 300px;
     left: 780px;
-    background-color: aliceblue;
+
+}
+#draggable li{
+    z-index: 2;
 }
 
 #descriptionContainer{
@@ -69,10 +72,12 @@
     position: absolute;
     right: 0;
     top: 20%;
+    display: none;
 }
 
 .LP-container li{
     list-style-type: none;
+    margin-bottom: 80px;
 }
 
 .LP-container img{

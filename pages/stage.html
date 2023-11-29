@@ -16,6 +16,7 @@
                 <div class="lp-item"></div>
             </div>   
         </div>
+        <button id="join">버튼</button>
     </div>
 </body>
 <script>
@@ -40,6 +41,10 @@ let audios = [
         author: 'Third Author'
     }
 ]
+
+$('#join').click(()=>{
+    location.href = './record.html'
+})
 
 // 현재 재생중인 오디오
 let currentAudio = new Audio()
