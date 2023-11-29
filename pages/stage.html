@@ -7,6 +7,7 @@
     <title>Media App</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="../styles/stage.css">
 </head>
 <body>
@@ -40,7 +41,11 @@ let audios = [
         author: 'Third Author'
     }
 ]
-
+$(function(){
+    $(".lp").draggable({
+        revert: true
+    });
+})
 // 현재 재생중인 오디오
 let currentAudio = new Audio()
 let lp_listDiv= $('#lp_list');
@@ -54,7 +59,7 @@ for(let i in audios){
     let lpItem = $('<div class="lp-item">');
     let dom = $('<div id = "lp_container"></div>')
     lpItem.append('<p>' + author + ' - ' + title + '</p>')
-    lpItem.append('<img src="' + image + '" width="100px">')
+    lpItem.append('<div class = "lp"><img src="' + image + '"></div>')
     lp_listDiv.append(lpItem)
 
     // DOM 클릭 이벤트
