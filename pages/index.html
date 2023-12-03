@@ -17,8 +17,13 @@
 </head>
 
 <body>
+
     <div id="choiceLP">
+        
         <div class="LP-container">
+            <div class="fairy-image" style="display: none;">
+                <img src="../png/fairy.png" alt="Fairy">
+            </div>
             <div id="draggable">
                 <div class="theme1" data-audio="../musics/00.mp3">
                     테마 1
@@ -40,7 +45,7 @@
 
         <div id="descriptionContainer">
         </div>
-        
+
         <div id="turnTables" class="ui-widget-header">
             <p>턴테이블 위치</p>
         </div>
@@ -48,23 +53,32 @@
 </body>
 <script type="module">
     import { musicData } from "../data/data.js"
-    let currentAudio = new Audio()
+    let currentAudio = new Audio();
 
-    $("#draggable div").on("mouseover", function() {
-        $(this).animate({ top: "-=10px" }, 300);
+    $("#draggable div").draggable({
+        revert: true,
+        start: function() {
+            $(".fairy-image").hide();
+        }
+    });
+
+    $("#draggable div").on("mouseover", function () {
         var audioFile = $(this).data("audio");
         currentAudio.src = audioFile;
         currentAudio.play();
-    }).on("mouseout", function() {
-        $(this).animate({ top: "+=10px" }, 300);
+
+        var fairyImage = $(".fairy-image");
+        var position = $(this).position();
+        fairyImage.css({
+            top: position.top,
+            left: position.left + $(this).outerWidth(),
+            display: "block"
+        });
+    }).on("mouseout", function () {
         currentAudio.pause();
         currentAudio.currentTime = 0;
+        $(".fairy-image").hide();
     });
-
-
-    $("#draggable div").draggable({
-        revert: true    // 원래 위치로 되돌리기
-    })
 
     $("#turnTables").droppable({
         drop: function (event, ui) {
@@ -72,12 +86,9 @@
                 .addClass("ui-state-highlight")
                 .find("p")
                 .html("재생");
-                window.location.href = "./record.html"; // 원하는 페이지로 변경
-
+            window.location.href = "./record.html";
         }
     });
-
-
 </script>
 
 </html>

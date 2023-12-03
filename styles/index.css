@@ -1,3 +1,13 @@
+body{
+    cursor: url('../png/hand-cursor-64.png'), auto;
+}
+.fairy-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
 #choiceLP {
     background-image: url('../png/mainbackground.png');
     width: 100%;
