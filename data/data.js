@@ -1,42 +1,20 @@
 export const musicData = [
     {
-        title: "Song 1",
-        description: "This is the first song",
-        theme: "클래식"
+        audio: '../musics/00.mp3',
+        image: '../musics/00.png',
+        title: 'First Song',
+        author: 'First Author'
     },
     {
-        title: "Song 2",
-        description: "This is the first song",
-        theme: "클래식"
+        audio: '../musics/01.mp3',
+        image: '../musics/01.png',
+        title: 'Second Song',
+        author: 'Second Author'
     },
     {
-        title: "Song 3",
-        description: "This is the first song",
-        theme: "밴드"
-    },
-    {
-        title: "Song 4",
-        description: "This is the first song",
-        theme: "밴드"
-    },
-    {
-        title: "Song 5",
-        description: "This is the first song",
-        theme: "발라드"
-    },
-    {
-        title: "Song 6",
-        description: "This is the first song",
-        theme: "발라드"
-    },
-    {
-        title: "Song 7",
-        description: "This is the first song",
-        theme: "힙합"
-    },
-    {
-        title: "Song 8",
-        description: "This is the first song",
-        theme: "힙합"
-    },
+        audio: '../musics/02.mp3',
+        image: '../musics/02.png',
+        title: 'Third Song',
+        author: 'Third Author'
+    }
 ];
