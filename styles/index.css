@@ -1,6 +1,13 @@
-body{
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
     cursor: url('../png/point.png'), auto;
 }
+
 .fairy-image {
     position: absolute;
     top: 0;
@@ -11,7 +18,7 @@ body{
 #choiceLP {
     background-image: url('../png/mainbackground.png');
     width: 100%;
-    height: 1000px;
+    height: 1080px;
     background-position: center;
     background-repeat: no-repeat;
     padding: 40px 0 0 0;
@@ -19,13 +26,13 @@ body{
 }
 
 .LP-container {
-    width: 1400px;
-    height: 600px;
     border: 3px solid white;
+    width: 1920px;
+    height: 1000px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    margin-top: 120px;
+
 }
 
 #draggable {
@@ -39,59 +46,63 @@ body{
 }
 
 #turnTables {
-    width: 280px;
-    height: 100px;
+    width: 290px;
+    height: 96px;
     border: 1px solid;
     position: absolute;
-    bottom: 140px;
-    left: 44%;
+    bottom: 170px;
+    left: 43.8%;
+}
+.ui-widget-header{
+    background-color: rgba(255, 255, 255, 0);
+    border: none !important;
 }
 
 .theme1 {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    top: 40px;
-    left: 350px;
+    width: 140px;
+    height: 140px;
+    top: 200px;
+    left: 620px;
     background-color: aqua;
 }
 
 .theme2 {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    top: 40px;
-    left: 625px;
+    width: 140px;
+    height: 140px;
+    top: 200px;
+    left: 890px;
     background-color: aqua;
 
 }
 
 .theme3 {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    top: 40px;
-    right: 350px;
+    width: 140px;
+    height: 140px;
+    top: 200px;
+    right: 620px;
     background-color: aqua;
 
 }
 
 .theme4 {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    bottom: 160px;
-    left: 350px;
+    width: 140px;
+    height: 140px;
+    bottom: 410px;
+    left: 620px;
     background-color: aqua;
 
 }
 
 .theme5 {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    bottom: 160px;
-    right: 350px;
+    width: 140px;
+    height: 140px;
+    bottom: 410px;
+    right: 614px;
     background-color: aqua;
 
 }

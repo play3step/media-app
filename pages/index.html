@@ -32,12 +32,12 @@
                 <div class="theme3" data-audio="../musics/02.mp3">
                     테마 3
                 </div>
-                <!-- <div class="theme4">
+                <div class="theme4">
                     테마 4
                 </div>
                 <div class="theme5">
                     테마 5
-                </div> -->
+                </div>
             </div>
         </div>
 
@@ -45,7 +45,6 @@
         </div>
 
         <div id="turnTables" class="ui-widget-header">
-            <p>턴테이블 위치</p>
         </div>
     </div>
 </body>
@@ -55,6 +54,7 @@
 
     $("#draggable div").draggable({
         revert: true, // 원래 위치로 되돌리기
+        cursor: "url('../png/point.png'), auto", // 드래그 중에 사용할 커서
         start: function () {
             $(".fairy-image").hide(); // 드래그 시작 시 요정 이미지 숨김
         }
@@ -84,7 +84,8 @@
                 .addClass("ui-state-highlight")
                 .find("p")
                 .html("재생");
-            window.location.href = "./record.html";
+            var themeId = $(ui.draggable).data("id");
+            window.location.href = "./record.html?themeId=" + themeId; //파라메타로 데이터 전송
         }
     });
 </script>
