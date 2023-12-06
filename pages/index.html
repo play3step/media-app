@@ -14,33 +14,60 @@
         integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="../styles/index.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
 </head>
 
 <body>
     <div id="choiceLP">
         <div class="LP-container">
-            <div class="fairy-image" style="display: none;">
-                <img src="../png/fairy.png" alt="Fairy">
-            </div>
             <div id="draggable">
+
+
                 <div class="theme1" data-audio="../musics/00.mp3">
-                    테마 1
+                    <div class="fairy">
+                        <img src="../png/fairy.png">
+                    </div>
+                    <div class="shadow-fairy">
+                        <img src="../png/fairyshadow.png">
+                    </div>
                 </div>
+
                 <div class="theme2" data-audio="../musics/01.mp3">
-                    테마 2
+                    <div class="fairy">
+                        <img src="../png/fairy.png">
+                    </div>
+                    <div class="shadow-fairy">
+                        <img src="../png/fairyshadow.png">
+                    </div>
                 </div>
                 <div class="theme3" data-audio="../musics/02.mp3">
-                    테마 3
+                    <div class="fairy">
+                        <img src="../png/fairy.png">
+                    </div>
+                    <div class="shadow-fairy">
+                        <img src="../png/fairyshadow.png">
+                    </div>
                 </div>
                 <div class="theme4">
-                    테마 4
+                    <div class="fairy">
+                        <img src="../png/fairy.png">
+                    </div>
+                    <div class="shadow-fairy">
+                        <img src="../png/fairyshadow.png">
+                    </div>
                 </div>
                 <div class="theme5">
-                    테마 5
+                    <div class="fairy">
+                        <img src="../png/fairy.png">
+                    </div>
+                    <div class="shadow-fairy">
+                        <img src="../png/fairyshadow.png">
+                    </div>
                 </div>
             </div>
         </div>
-
         <div id="descriptionContainer">
         </div>
 
@@ -52,31 +79,31 @@
     import { musicData } from "../data/data.js"
     let currentAudio = new Audio();
 
-    $("#draggable div").draggable({
+    $("#draggable .theme1, #draggable .theme2, #draggable .theme3, #draggable .theme4, #draggable .theme5").draggable({
         revert: true, // 원래 위치로 되돌리기
-        cursor: "url('../png/point.png'), auto", // 드래그 중에 사용할 커서
+        cursor: "url('../png/point.png'), auto", 
         start: function () {
-            $(".fairy-image").hide(); // 드래그 시작 시 요정 이미지 숨김
+            $(this).find(".shadow-fairy").hide(); 
+            $(this).find(".fairy").show();
+        },
+        stop: function () {
+            $(this).find(".fairy").hide(); // 드래그 종료 시 일반 요정 숨김
         }
     });
-
-    $("#draggable div").on("mouseover", function () {
+    $("#draggable .theme1, #draggable .theme2, #draggable .theme3, #draggable .theme4, #draggable .theme5").on("mouseover", function () {
         var audioFile = $(this).data("audio");
         currentAudio.src = audioFile;
         currentAudio.play();
 
-        var fairyImage = $(".fairy-image");
-        var position = $(this).position();
-        fairyImage.css({
-            top: position.top,
-            left: position.left + $(this).outerWidth(),
+        $(this).find(".shadow-fairy").css({
             display: "block"
         });
     }).on("mouseout", function () {
         currentAudio.pause();
         currentAudio.currentTime = 0;
-        $(".fairy-image").hide();
+        $(this).find(".shadow-fairy").hide();
     });
+
 
     $("#turnTables").droppable({
         drop: function (event, ui) {
