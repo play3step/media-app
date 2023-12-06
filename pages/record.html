@@ -10,7 +10,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/record.css">
-
 </head>
 
 <body>
@@ -19,8 +18,8 @@
             <div id="record_cover">
                 <div id="tone_arm"></div>
             </div>
-            <div id="albume_info">
-                <img id="current_img">
+            <div id="play_list" class="list_container">
+                <div id="list_item"></div>
             </div>
             <div id="controller_box">
                 <div id="music_controller">
@@ -48,15 +47,38 @@
     let image = musicData[0].image
     let title = musicData[0].title
     let author = musicData[0].author
+    let audio = new Audio(musicData[0].audio);
     let toggleAlbume = false;
-    $("#current_img").attr('src', image)
+    let toggleTonearm = false;
+
+    $('.list_container').css("background-image", `url(${image})`);
+    let listDiv = $("#play_list")
+    for (let i = 0; i < 3; i++) {
+        let title = musicData[i].title
+
+        let list_item = $('<div class = "list_item">');
+        list_item.append('<span class = "title">' + title + '</span>');
+        listDiv.append(list_item)
+    }
 
     $(document).ready(function () {
         $("#tone_arm").click(function () {
-            $(this).css({ 'transform': 'rotateZ(45deg)' });
-            event.stopPropagation();
+            if (!toggleTonearm) {
+                $(this).css({ 'transform': 'rotateZ(45deg)' });
+                event.stopPropagation();
+                toggleTonearm = true;
+            }
+            else {
+                $(this).css({ 'transform': 'rotateZ(0deg)' });
+                event.stopPropagation();
+                toggleTonearm = false;
+            }
         });
-        $("#albume_info").click(function () {
+        $('#record_cover').click(function () {
+            $(this).css({ 'transform': 'rotateX(180deg)' })
+        })
+        $(".list_container").click(function (event) {
+            event.stopPropagation();
             if (!toggleAlbume) {
                 $(this).animate({
                     rotate: "5deg"
@@ -74,9 +96,32 @@
             }
 
         });
-        $('#record_cover').click(function () {
-            $(this).css({ 'transform': 'rotateX(180deg)' })
-        })
+
+        let currentAudio;
+        $('.title').hover(
+            function (event) {
+                event.stopPropagation();
+                $(this).css('color', 'red');
+                let title = $(this).text();
+                let newAudio;
+                for (let i = 0; i < musicData.length; i++) {
+                    if (musicData[i].title === title) {
+                        newAudio = new Audio(musicData[i].audio);
+                        break;
+                    }
+                }
+                if (newAudio) {
+                    if (currentAudio) {
+                        currentAudio.pause();
+                    }
+                    newAudio.play();
+                    currentAudio = newAudio;
+                }
+            },
+            function () {
+                $(this).css('color', 'black');
+            }
+        );
     });
 
 
