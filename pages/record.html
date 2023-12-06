@@ -16,14 +16,13 @@
 <body>
     <div id="wrap">
         <div id="background_img">
-            <div id="album_info">
-                <img id="current_image" width="200px" />
-                <h1 id="current_title">Title</h1>
+            <div id ="record_cover">
+                <div id = "tone_arm"></div>
+                
             </div>
-            <h2 id="current_progress">Progress</h2>
-            <div id="current_bar" style="width: 1920px; height: 30px; border: 1px solid rgb(255, 0, 0);">
-                <div style="background-color: rgb(255, 0, 0); width: 1920; height: 30px;"></div>
-            </div>
+            <div id ="albume_info">
+                <img id = "current_img">
+            </div>  
             <div id="controller_box">
                 <div id="music_controller">
                     <button id="btn_prev">
@@ -37,38 +36,22 @@
                     </button>
                 </div>
             </div>
-
-            <div id="play_list"></div>
         </div>
     </div>
 
 </body>
-<script>
+<script type="module">
     // 재생 목록 데이터
-    let audios = [
-        {
-            audio: '../musics/00.mp3',
-            image: '../musics/00.png',
-            title: 'First Song',
-            author: 'First Author'
-        },
-        {
-            audio: '../musics/01.mp3',
-            image: '../musics/01.png',
-            title: 'Second Song',
-            author: 'Second Author'
-        },
-        {
-            audio: '../musics/02.mp3',
-            image: '../musics/02.png',
-            title: 'Third Song',
-            author: 'Third Author'
-        }
-    ]
+    import { musicData } from "../data/data.js"
+    console.log(musicData)
 
     // 현재 재생중인 오디오
     let currentAudio = new Audio()
+    let image = musicData[0].image
+    let title = musicData[0].title
+    let author = musicData[0].author
 
+    $("#current_img").attr('src',image)
     // 리스트에 추가
     for (let i in audios) {
         // 오디오 정보 변수
@@ -124,6 +107,16 @@
     $('#btn_stop').click(function () { // 완전 정지
         currentAudio.pause()
         currentAudio.currentTime = 0
+    })
+    $(document).ready(function () {
+        $("#tone_arm").click(function () {
+            $(this).css({'transform':'rotateZ(45deg)'});
+            event.stopPropagation();
+        });
+    }); 
+
+    $('#record_cover').click(function(){
+            $(this).css({'transform':'rotateX(180deg)'})
     })
 
     $('#btn_prev').click(function () { // 이전곡

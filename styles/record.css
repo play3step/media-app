@@ -1,5 +1,6 @@
 #background_img{
-    background-image:url("../png/stage.png");
+    background-image:url("../png/record.png");
+    z-index: 0;
     height:  1080px;
     width: 1920px;
 }
@@ -35,4 +36,41 @@
     top: 872px;
     width: 1920px;
     height: 30px;
+}
+#recordcover{
+    background-image: url("../png/recordcover.png");
+    z-index: 2;
+    width: 1034px;
+    height: 361px;
+    position: absolute;
+    left: 443px;
+    top: 250px;
+    transform-origin: center top;
+    backface-visibility: hidden;
+    transition: 2s;
+}
+#tonearm{ 
+    background-image: url("../png/tonearm.png");
+    width: 155px;
+    height: 347px;
+    position: absolute;
+    left:738px;
+    top: -57px;
+    flex-shrink: 0;
+    z-index: 1;
+    transition: 1s;
+    transform-origin: center top;
+}
+#albume_info{
+    width: 716px;
+    height: 653px;
+    transform: rotate(-5deg);
+    flex-shrink: 0;
+    position: absolute;
+    top: 163px;
+    left: 1450px;
+}
+#current_img{
+    width: 716px;
+    height: 653px;
 }
