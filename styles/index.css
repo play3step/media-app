@@ -18,9 +18,9 @@ body {
 
 #choiceLP {
     background-image: url('../png/main.png');
-    width: 100%;
+    width: 1920px;
     height: 1080px;
-    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
     padding: 40px 0 0 0;
     position: relative;
@@ -42,7 +42,6 @@ body {
     float: left;
     margin: 10px 10px 10px 0;
     z-index: 1;
-
 }
 
 #turnTables {
@@ -51,7 +50,7 @@ body {
     border: 1px solid;
     position: absolute;
     bottom: 100px;
-    left: 42.2%;
+    left: 41%;
 }
 .ui-widget-header{
     background-color: rgba(255, 255, 255, 0);
@@ -130,3 +129,17 @@ body {
     width: 80px;
     height: 80px;
 }
+
+.fairy{
+    position: absolute;
+    left: -40px;
+    top: -50px;
+    display: none;
+}
+.shadow-fairy{
+    position: absolute;
+    left: -40px;
+    top: -50px;
+    display: none;
+}
+
