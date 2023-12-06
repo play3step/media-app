@@ -16,13 +16,12 @@
 <body>
     <div id="wrap">
         <div id="background_img">
-            <div id ="record_cover">
-                <div id = "tone_arm"></div>
-                
+            <div id="record_cover">
+                <div id="tone_arm"></div>
             </div>
-            <div id ="albume_info">
-                <img id = "current_img">
-            </div>  
+            <div id="albume_info">
+                <img id="current_img">
+            </div>
             <div id="controller_box">
                 <div id="music_controller">
                     <button id="btn_prev">
@@ -46,96 +45,39 @@
     console.log(musicData)
 
     // 현재 재생중인 오디오
-    let currentAudio = new Audio()
     let image = musicData[0].image
     let title = musicData[0].title
     let author = musicData[0].author
+    let toggleAlbume = false;
+    $("#current_img").attr('src', image)
 
-    $("#current_img").attr('src',image)
-    // 리스트에 추가
-    for (let i in audios) {
-        // 오디오 정보 변수
-        let audio = new Audio(audios[i].audio)
-        let image = audios[i].image
-        let title = audios[i].title
-        let author = audios[i].author
-
-        let dom = $('<div></div>')
-        dom.append('<p>' + author + ' - ' + title + '</p>')
-        dom.append('<img src="' + image + '" width="100px">')
-        dom.append(audio)
-
-        // DOM 클릭 이벤트
-        dom.click(function () {
-            currentAudio.pause()
-            currentAudio = audio
-            currentAudio.currentTime = 0;
-            currentAudio.play()
-
-            $(this).siblings().removeClass('playing')
-            $(this).addClass('playing')
-
-            $('#current_image').attr('src', image);
-            $('#current_title').text(author + ' - ' + title)
-        })
-
-        $('#play_list').append(dom)
-    }
-
-    // 현재 재생 기본 값 (0번 곡 자동으로 지정)
-    $('#play_list > div').eq(0).click();
-    currentAudio.pause()
-
-    // 현재 시간 얻기
-    setInterval(function () {
-        $('#current_progress').text(currentAudio.currentTime + '/' + currentAudio.duration);
-
-        let barWidth = $('#current_bar').innerWidth();
-        $('#current_bar > div').css('width', barWidth * currentAudio.currentTime / currentAudio.duration)
-    }, 50)
-
-    // 버튼 이벤트
-    $('#btn_play').click(function () { // 재생/일시정지
-        if (currentAudio.paused == true) {
-            currentAudio.play()
-        }
-        else {
-            currentAudio.pause()
-        }
-    })
-
-    $('#btn_stop').click(function () { // 완전 정지
-        currentAudio.pause()
-        currentAudio.currentTime = 0
-    })
     $(document).ready(function () {
         $("#tone_arm").click(function () {
-            $(this).css({'transform':'rotateZ(45deg)'});
+            $(this).css({ 'transform': 'rotateZ(45deg)' });
             event.stopPropagation();
         });
-    }); 
+        $("#albume_info").click(function () {
+            if (!toggleAlbume) {
+                $(this).animate({
+                    rotate: "5deg"
+                }, 500).animate({
+                    'left': '1640px'
+                });
+                toggleAlbume =true
+            } else {
+                $(this).animate({
+                    'left': '1440px'
+                }, 500).animate({
+                    rotate: "-5deg"
+                });
+                toggleAlbume = false
+            }
 
-    $('#record_cover').click(function(){
-            $(this).css({'transform':'rotateX(180deg)'})
-    })
-
-    $('#btn_prev').click(function () { // 이전곡
-        let index = $(currentAudio).parent().index()
-        $('#list > div').eq((index - 1) % audios.length).click()
-    })
-
-    $('#btn_next').click(function () { // 다음곡
-        let index = $(currentAudio).parent().index()
-        $('#list > div').eq((index + 1) % audios.length).click()
-    })
-
-    $('#btn_p10').click(function () { // 10초 후
-        currentAudio.currentTime += 10
-    })
-
-    $('#btn_m10').click(function () { // 10초 전
-        currentAudio.currentTime -= 10
-    })
+        });
+        $('#record_cover').click(function () {
+            $(this).css({ 'transform': 'rotateX(180deg)' })
+        })
+    });
 
 
 </script>
