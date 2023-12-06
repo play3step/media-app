@@ -1,9 +1,19 @@
-#background_img{
-    background-image:url("../png/record.png");
-    z-index: 0;
+#wrap{
     height:  1080px;
     width: 1920px;
+    overflow: hidden;
 }
+#background_img {
+    background-image: url("../png/record.png");
+    z-index: 0;
+    height: 1080px;
+    width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    position: relative;
+}
+
 #btn_prev{
     background-image: url("../png/skip_previous.png");
 }
@@ -68,7 +78,8 @@
     flex-shrink: 0;
     position: absolute;
     top: 163px;
-    left: 1450px;
+    left: 1440px;
+
 }
 #current_img{
     width: 716px;
