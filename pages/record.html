@@ -36,11 +36,7 @@
                         </div>
                         <span id="total_time_display">-2:56</span>
                     </div>
-                    <div id="prograss_bar">
-                        <div id="current_time"></div>
-                        <div id="current_bar"></div>
-                        <div id="total_time"></div>
-                    </div>
+                   
                     <div style="display: flex; flex-direction: row;">
                         <button id="btn_prev">
                             <img src="../png/skip_previous.png">
@@ -64,7 +60,7 @@
     import { musicData } from "../data/data.js";
     let urlParams = new URLSearchParams(window.location.search);
     let themeId = urlParams.get('themeId');
-    let currentAlbum = musicData[Number(themeId-1)];
+    let currentAlbum = musicData[Number(themeId)];
 
     // 현재 재생 중인 오디오
     let albumTitle = currentAlbum.albume_title;
@@ -87,6 +83,26 @@
         listDiv.append(listItem);
     }
     $(document).ready(function () {
+        setInterval(function () {
+            // Update current time display
+            let currentTime = Math.floor(currentAudio.currentTime);
+            let total_time = Math.floor(currentAudio.duration);
+            $('#current_time_display').text(formatTime(currentTime));
+            $('#total_time_display').text(formatTime(total_time))
+            // Update progress bar
+            let barWidth = $('#progress_bar').innerWidth();
+            let indicator = $('#progress_indicator').innerWidth();
+            let progressWidth = (barWidth * currentAudio.currentTime / currentAudio.duration) || 0;
+            $('#progress_bar > div').css('width', progressWidth);
+            $('#progress_indicator > div').css('left', progressWidth);
+
+        }, 50);
+
+        function formatTime(seconds) {
+            let minutes = Math.floor(seconds / 60);
+            let remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
 
         $("#btn_exit").click(function () {
             window.location.href = "./index.html"

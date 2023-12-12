@@ -166,34 +166,36 @@
     margin: 0 auto; /* 가운데 정렬을 위함 */
 }
 
-#progress_bar {
-    flex-grow: 1; /* 남은 공간을 모두 차지하도록 설정 */
-    background: rgba(255, 255, 255, 0.50); /* 배경 색상과 투명도 */
-    height: 5px;
-    border-radius: 10px; /* 둥근 모서리 */
-    position: relative;
-    margin: 0 15px; /* 양쪽 여백 */
-}
 
 #progress_indicator {
-    background: #FFFFFF; /* 프로그레스바 색상 */
+    background: #FFFFFF; /* 프로그레스 바의 색상 */
     height: 100%;
-    border-radius: 10px; /* 둥근 모서리 */
-    width: 0%; /* 초기 너비 */
-    position: absolute;
+    border-radius: 10px; 
+    width: 0%; 
+    position: absolute; 
 }
+
 #progress_indicator::after {
     content: '';
     position: absolute;
-    top: -10px;
-    left: 0;
+    top: -5px;
+    left: 100%; 
     transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background: white;
-    border: 3px solid #f0db4f;
+    border: 3px solid #d2d2d2;
     border-radius: 50%;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+#progress_bar {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.50); 
+    height: 5px;
+    border-radius: 10px; 
+    position: relative;
+    margin: 0 15px; 
 }
 
 #current_time_display, #total_time_display {
