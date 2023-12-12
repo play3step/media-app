@@ -27,14 +27,12 @@
                     <span class="title"></span>
                 </div>
             </div>
-            <div id ="albume_info">
-                <img id ="current_img">
-            </div>  
-
             <div id="controller_box">
                 <div id="music_controller">
                     <div id="prograss_bar">
+                        <div id="current_time"></div>
                         <div id="current_bar"></div>
+                        <div id="total_time"></div>
                     </div>
                     <button id="btn_prev">
                         <img src="../png/skip_previous.png">
@@ -53,45 +51,36 @@
 </body>
 <script type="module">
     // 재생 목록 데이터
-    import { musicData } from "../data/data.js"
-    console.log(musicData)
+    // 재생 목록 데이터
+    import { musicData } from "../data/data.js";
+    console.log(musicData);
 
-    // 현재 재생중인 오디오
-    let image = musicData[0].image
-    let title = musicData[0].title
-    let author = musicData[0].author
-    let audio = new Audio(musicData[0].audio);
-    let toggleAlbume = false;
+    let currentAlbumIndex = 0;
+    let currentAlbum = musicData[currentAlbumIndex];
+
+    // 현재 재생 중인 오디오
+    let albumTitle = currentAlbum.albume_title;
+    let albumImage = currentAlbum.albume_image;
+    let firstSong = currentAlbum.songs[0];
+    let title = firstSong.title;
+    let author = firstSong.author;
+    let audio = new Audio(firstSong.audio);
     let toggleTonearm = false;
 
-    $('.list_container').css("background-image", `url(${image})`);
-    let listDiv = $("#play_list")
-    for (let i = 0; i < 3; i++) {
-        let title = musicData[i].title
-
-        let list_item = $('<div class = "list_item">');
-        list_item.append('<span class = "title">' + title + '</span>');
-        listDiv.append(list_item)
-    }
+    $('.list_container').css("background-image", `url(${albumImage})`);
+    let listDiv = $("#play_list");
+    let listItem = $('<div class="list_item">');
+    // 재생 목록에 추가
+    for (let i = 0; i < currentAlbum.songs.length; i++) {
+        let title = currentAlbum.songs[i].title;
 
 
-    function toggleToneArm() {
-        if (!toggleTonearm) {
-            $(this).css({ 'transform': 'rotateZ(45deg)' });
-            $(this).css({ 'left': '814px' });
-            $(this).css({ 'top': '6px' })
-            event.stopPropagation();
-            toggleTonearm = true;
-        }
-        else {
-            $(this).css({ 'transform': 'rotateZ(0deg)' });
-            $(this).css({ 'left': '771px' });
-            event.stopPropagation();
-            toggleTonearm = false;
-        }
+        listItem.append('<h2 class="title">' + title + '</h2>');
+        listDiv.append(listItem);
     }
     $(document).ready(function () {
-        $("#btn_exit").click(function(){
+
+        $("#btn_exit").click(function () {
             window.location.href = "./index.html"
         })
         $("#tone_arm").click(function () {
@@ -117,44 +106,45 @@
                 btnPlayImg.attr('src', '../png/play_arrow.png').appendTo('#btn_play');
             }
         });
-
+        let isOpened = false;
         $('#record_cover').click(function () {
-            $(this).css({ 'transform': 'rotateX(180deg)' })
-        })
-
-        $(".list_container").click(function (event) {
-            event.stopPropagation();
-            if (!toggleAlbume) {
-                $(this).animate({
-                    rotate: "5deg"
-                }, 500).animate({
-                    'left': '1640px'
-                });
-                toggleAlbume = true;
+            if (!isOpened) {
+                $(this).css({ 'transform': 'rotateX(180deg)' })
+                //$(this).css({'background':'royalblue'});
+                $("#tone_arm").css({ 'visibility': 'hidden' }).fadeOut(500);
+                $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
+                isOpened = true;
             } else {
-                $(this).animate({
-                    'left': '1440px'
-                }, 500).animate({
-                    rotate: "-5deg"
-                });
-                toggleAlbume = false;
+                $(this).css({ 'transform': 'rotateX(0deg)' }).delay(500);
+                setTimeout(function () {
+                    $("#tone_arm, #tone").css({ 'visibility': 'visible' }).fadeIn(500);
+                }, 500);
+
+                isOpened = false;
             }
+        })
+        $(".list_container").animate({
+            'left': '1240px',
+            'rotate': '5deg'
+        }, 500).animate({
+            'rotate': '-5deg'
         });
-
-        let currentAudio = audio;
-
         $('#btn_play').click(function () {
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
             btnPlayImg.remove();
+
             if (currentAudio.paused) {
                 $("#tone_arm").css({ 'transform': 'rotateZ(45deg)' });
                 $("#tone_arm").css({ 'left': '814px' });
-                $("#tone_arm").css({ 'top': '6px' })
+                $("#tone_arm").css({ 'top': '6px' });
                 btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
                 event.stopPropagation();
                 toggleTonearm = true;
                 currentAudio.play();
+                title = firstSong.title;
+
+                getCurrentTitle(title);
             } else {
                 $("#tone_arm").css({ 'transform': 'rotateZ(0deg)' });
                 $("#tone_arm").css({ 'left': '771px' });
@@ -164,38 +154,87 @@
                 currentAudio.pause();
             }
         });
-
-        $('#btn_prev').click(function () {
-            let currentIndex = musicData.findIndex(item => item.audio === currentAudio.src);
-            let prevIndex = (currentIndex - 1 + musicData.length + 1) % musicData.length;
-            changeAudio(prevIndex);
-        });
-
         $('#btn_next').click(function () {
-            let currentIndex = musicData.findIndex(item => item.audio === currentAudio.src);
-            let nextIndex = (currentIndex + 1) % musicData.length + 1;
-            changeAudio(nextIndex);
-        });
+        playNextSong();
+    });
 
-        function changeAudio(index) {
-            let newAudio = new Audio(musicData[index].audio);
-            newAudio.addEventListener('loadedmetadata', function () {
-                currentAudio.pause();
-                currentAudio = newAudio;
-                currentAudio.play();
-            });
+    $('#btn_prev').click(function () {
+        playPreviousSong();
+    });
+
+    function playNextSong() {
+        let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
+        let nextIndex = (currentIndex + 1) % currentAlbum.songs.length;
+        playSongByIndex(nextIndex);
+    }
+
+    function playPreviousSong() {
+        let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
+        let prevIndex = (currentIndex - 1 + currentAlbum.songs.length) % currentAlbum.songs.length;
+        playSongByIndex(prevIndex);
+    }
+
+    function playSongByIndex(index) {
+        let selectedSong = currentAlbum.songs[index];
+        title = selectedSong.title;
+        author = selectedSong.author;
+        let newAudio = new Audio(selectedSong.audio);
+
+        $('.title').css('color', '');
+
+        $('.title:contains("' + title + '")').css('color', 'red');
+
+        if (currentAudio) {
+            currentAudio.pause();
         }
+
+        newAudio.play();
+        currentAudio = newAudio;
+    }
+        function getCurrentTitle(current_title) {
+            for (let i = 0; i < musicData.length; i++) {
+                let album = musicData[i];
+                for (let j = 0; j < album.songs.length; j++) {
+                    let song = album.songs[j];
+
+                    if (song.title === current_title) {
+                        console.log(song.title)
+                        $('.title').eq(j + 1).css('color', 'red');
+                        break;
+                    }
+                }
+            }
+        }
+
+        let currentAudio = audio
+
         $('.title').click(function (event) {
             event.stopPropagation();
+
+            // Remove red color from all titles
+            $('.title').css('color', '');
+
+            // Set the clicked title to red
             $(this).css('color', 'red');
-            let title = $(this).text();
+            let index = $(this).index();
+            let clickedTitle = $('.title').text();
             let newAudio;
+
+            // musicData 배열을 순회하며 클릭된 제목과 일치하는 곡을 찾음
             for (let i = 0; i < musicData.length; i++) {
-                if (musicData[i].title === title) {
-                    newAudio = new Audio(musicData[i].audio);
+                let album = musicData[i];
+                for (let j = 0; j < album.songs.length; j++) {
+                    let song = album.songs[j];
+                    if (song.title === clickedTitle) {
+                        newAudio = new Audio(song.audio);
+                        break;
+                    }
+                }
+                if (newAudio) {
                     break;
                 }
             }
+
             if (newAudio) {
                 if (currentAudio) {
                     currentAudio.pause();
@@ -203,14 +242,9 @@
                 newAudio.play();
                 currentAudio = newAudio;
             }
-        }).hover(
-            function () {
-                $(this).css('color', 'red');
-            },
-            function () {
-                $(this).css('color', 'black');
-            }
-        );
+        });
+
+
 
     });
 

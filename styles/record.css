@@ -26,7 +26,7 @@
     position: absolute;
     left: 47px;
     top: 40px;
-    
+
 }
 
 #btn_exit:active {
@@ -53,7 +53,7 @@
     height: 63px;
     background-color: transparent;
     border: none;
-   
+
 }
 
 #controller_box {
@@ -86,12 +86,13 @@
 #record_cover {
     background-image: url("../png/recordcover.png");
     z-index: 1;
-    width: 1005px;
-    height: 664px;
+    width: 1002px;
+    height: 650px;
     flex-shrink: 0;
+
     position: absolute;
     left: 90px;
-    top: 101px;
+    top: 105px;
     transform-origin: center top;
     /*backface-visibility: hidden;*/
     transition: 2s;
@@ -120,40 +121,43 @@
     width: 163px;
     height: 536px;
     flex-shrink: 0;
-}
-
-#albume_info {
-    width: 716px;
-    height: 653px;
-    transform: rotate(-5deg);
-    flex-shrink: 0;
-    position: absolute;
-    top: 163px;
-    left: 1440px;
-
+    transition: 1s;
 }
 
 #play_list {
-    position: inherit;
-    width: 716px;
-    height: 653px;
+    width: 764px;
+    height: 764px;
+    transform: rotate(-5deg);
+    flex-shrink: 0;
+    position: absolute;
+    top: 35px;
+    left: 1920px;
 }
 
 .list_container {
     position: inherit;
-    width: 716px;
-    height: 653px;
-    transform: rotate(-5deg);
+    width: 764px;
+    height: 764px;
+}
+
+.list_item {
     position: absolute;
-    top: 163px;
-    left: 1440px;
+    top: 205px;
+    left: 306px;
+    width: 218px;
+    height: 340px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
 }
 
 .title {
-    margin-bottom: 40px;
+    color: #FFF;
+    font-family: Nanum KoKoCe;
     font-size: 40px;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
