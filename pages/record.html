@@ -50,13 +50,10 @@
 
 </body>
 <script type="module">
-    // 재생 목록 데이터
-    // 재생 목록 데이터
     import { musicData } from "../data/data.js";
-    console.log(musicData);
-
-    let currentAlbumIndex = 0;
-    let currentAlbum = musicData[currentAlbumIndex];
+    let urlParams = new URLSearchParams(window.location.search);
+    let themeId = urlParams.get('themeId');
+    let currentAlbum = musicData[Number(themeId-1)];
 
     // 현재 재생 중인 오디오
     let albumTitle = currentAlbum.albume_title;
@@ -142,8 +139,6 @@
                 event.stopPropagation();
                 toggleTonearm = true;
                 currentAudio.play();
-                title = firstSong.title;
-
                 getCurrentTitle(title);
             } else {
                 $("#tone_arm").css({ 'transform': 'rotateZ(0deg)' });
@@ -207,44 +202,6 @@
         }
 
         let currentAudio = audio
-
-        $('.title').click(function (event) {
-            event.stopPropagation();
-
-            // Remove red color from all titles
-            $('.title').css('color', '');
-
-            // Set the clicked title to red
-            $(this).css('color', 'red');
-            let index = $(this).index();
-            let clickedTitle = $('.title').text();
-            let newAudio;
-
-            // musicData 배열을 순회하며 클릭된 제목과 일치하는 곡을 찾음
-            for (let i = 0; i < musicData.length; i++) {
-                let album = musicData[i];
-                for (let j = 0; j < album.songs.length; j++) {
-                    let song = album.songs[j];
-                    if (song.title === clickedTitle) {
-                        newAudio = new Audio(song.audio);
-                        break;
-                    }
-                }
-                if (newAudio) {
-                    break;
-                }
-            }
-
-            if (newAudio) {
-                if (currentAudio) {
-                    currentAudio.pause();
-                }
-                newAudio.play();
-                currentAudio = newAudio;
-            }
-        });
-
-
 
     });
 
