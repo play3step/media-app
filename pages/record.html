@@ -29,20 +29,31 @@
             </div>
             <div id="controller_box">
                 <div id="music_controller">
+                    <div id="progress_bar_container">
+                        <span id="current_time_display">0:00</span>
+                        <div id="progress_bar">
+                            <div id="progress_indicator"></div>
+                        </div>
+                        <span id="total_time_display">-2:56</span>
+                    </div>
                     <div id="prograss_bar">
                         <div id="current_time"></div>
                         <div id="current_bar"></div>
                         <div id="total_time"></div>
                     </div>
-                    <button id="btn_prev">
-                        <img src="../png/skip_previous.png">
-                    </button>
-                    <button id="btn_play">
-                        <img src="../png/play_arrow.png">
-                    </button>
-                    <button id="btn_next">
-                        <img src="../png/skip_next.png">
-                    </button>
+                    <div style="display: flex; flex-direction: row;">
+                        <button id="btn_prev">
+                            <img src="../png/skip_previous.png">
+                        </button>
+                        <button id="btn_play">
+                            <img src="../png/play_arrow.png">
+                        </button>
+                        <button id="btn_next">
+                            <img src="../png/skip_next.png">
+                        </button>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -155,42 +166,42 @@
             }
         });
         $('#btn_next').click(function () {
-        playNextSong();
-    });
+            playNextSong();
+        });
 
-    $('#btn_prev').click(function () {
-        playPreviousSong();
-    });
+        $('#btn_prev').click(function () {
+            playPreviousSong();
+        });
 
-    function playNextSong() {
-        let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
-        let nextIndex = (currentIndex + 1) % currentAlbum.songs.length;
-        playSongByIndex(nextIndex);
-    }
-
-    function playPreviousSong() {
-        let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
-        let prevIndex = (currentIndex - 1 + currentAlbum.songs.length) % currentAlbum.songs.length;
-        playSongByIndex(prevIndex);
-    }
-
-    function playSongByIndex(index) {
-        let selectedSong = currentAlbum.songs[index];
-        title = selectedSong.title;
-        author = selectedSong.author;
-        let newAudio = new Audio(selectedSong.audio);
-
-        $('.title').css('color', '');
-
-        $('.title:contains("' + title + '")').css('color', 'red');
-
-        if (currentAudio) {
-            currentAudio.pause();
+        function playNextSong() {
+            let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
+            let nextIndex = (currentIndex + 1) % currentAlbum.songs.length;
+            playSongByIndex(nextIndex);
         }
 
-        newAudio.play();
-        currentAudio = newAudio;
-    }
+        function playPreviousSong() {
+            let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
+            let prevIndex = (currentIndex - 1 + currentAlbum.songs.length) % currentAlbum.songs.length;
+            playSongByIndex(prevIndex);
+        }
+
+        function playSongByIndex(index) {
+            let selectedSong = currentAlbum.songs[index];
+            title = selectedSong.title;
+            author = selectedSong.author;
+            let newAudio = new Audio(selectedSong.audio);
+
+            $('.title').css('color', '');
+
+            $('.title:contains("' + title + '")').css('color', 'red');
+
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+
+            newAudio.play();
+            currentAudio = newAudio;
+        }
         function getCurrentTitle(current_title) {
             for (let i = 0; i < musicData.length; i++) {
                 let album = musicData[i];
@@ -243,6 +254,7 @@
                 currentAudio = newAudio;
             }
         });
+
 
 
 
