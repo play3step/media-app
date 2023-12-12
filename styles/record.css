@@ -39,13 +39,11 @@
 #btn_prev {
     background-color: transparent;
     border: none;
-    background-image: url("../png/skip_previous.png");
 }
 
 #btn_next {
     background-color: transparent;
     border: none;
-    background-image: url("../png/skip_next.png");
 }
 
 #btn_play {
@@ -72,7 +70,7 @@
     width: 1153px;
     height: 87px;
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5px;
@@ -160,4 +158,45 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+#progress_bar_container {
+    display: flex;
+    align-items: center;
+    width: 332px;
+    margin: 0 auto; /* 가운데 정렬을 위함 */
+}
+
+#progress_bar {
+    flex-grow: 1; /* 남은 공간을 모두 차지하도록 설정 */
+    background: rgba(255, 255, 255, 0.50); /* 배경 색상과 투명도 */
+    height: 5px;
+    border-radius: 10px; /* 둥근 모서리 */
+    position: relative;
+    margin: 0 15px; /* 양쪽 여백 */
+}
+
+#progress_indicator {
+    background: #FFFFFF; /* 프로그레스바 색상 */
+    height: 100%;
+    border-radius: 10px; /* 둥근 모서리 */
+    width: 0%; /* 초기 너비 */
+    position: absolute;
+}
+#progress_indicator::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #f0db4f;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+#current_time_display, #total_time_display {
+    color: #FFFFFF; /* 시간 텍스트 색상 */
+    font-size: 14px;
 }

@@ -50,6 +50,32 @@ export const musicData = [
                 author: '카더가든(Car-The Garden)'
             }
         ],
+    },
+    {
+        albume_title:'Alan-Walker',
+        albume_image:'../png/00.png',
+        songs:[
+            {
+                audio: '../musics/Alan Walker Alone.mp3',
+                title: 'Alone',
+                author: 'Alan-Walker'
+            },
+            {
+                audio: '../musics/Alan Walker Faded.mp3',
+                title: 'Faded',
+                author: 'Alan-Walker'
+            },
+            {
+                audio: '../musics/Alan Walker On My Way.mp3',
+                title: 'On My Way',
+                author: 'Alan-Walker'
+            },
+            {
+                audio: '../musics/Alan Walker Sorry.mp3',
+                title: 'Sorry',
+                author: 'Alan-Walker'
+            }
+        ],
     }
   
 ];
