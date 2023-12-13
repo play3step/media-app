@@ -134,12 +134,22 @@
     position: inherit;
     width: 764px;
     height: 764px;
+    background-size: cover;
 }
-
+.list_container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 .list_item {
     position: absolute;
-    top: 205px;
-    left: 306px;
+    top: 305px;
+    left: 104px;
     height: 340px;
     display: inline-flex;
     flex-direction: column;
@@ -149,11 +159,12 @@
 
 .title {
     color: #FFF;
-    font-family: Nanum KoKoCe;
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    z-index: 2;
+
 }
 
 #progress_bar_container {
@@ -211,4 +222,9 @@
     top: 21px;
     left: 68px;
     z-index: 1;
+}
+
+
+.theme1{
+    
 }
