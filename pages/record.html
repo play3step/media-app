@@ -16,10 +16,17 @@
 <body>
     <div id="wrap">
         <div id="background_img">
+            <div id = "btn_fairy">
+                <div id = "btn_info">
+                    <div id = btn_fairy_img></div>
+                    <div id = btn_fairy_text>요정 관람하기</div>
+                </div>
+            </div>
             <button id="btn_exit">
                 <img src="../png/exit_button.png">
             </button>
             <div id="record_cover">
+               
                 <div id="lp">
                     <img>
                 </div>
@@ -32,6 +39,14 @@
                 </div>
             </div>
             <div id="controller_box">
+                <div id="current_music">
+                    <div id="current_albume"></div>
+                    <div id="current_song">
+                        <div id="current_title">제목</div>
+                        <div id="author">작곡</div>
+                    </div>
+
+                </div>
                 <div id="music_controller">
                     <div id="progress_bar_container">
                         <span id="current_time_display">0:00</span>
@@ -196,21 +211,25 @@
             }
         });
         let isOpened = false;
-        $('#record_cover').click(function () {
+        $('#btn_fairy').click(function () {
             if (!isOpened) {
-                $(this).css({ 'transform': 'rotateX(180deg)' })
+                $('#record_cover').css({ 'transform': 'rotateX(180deg)' })
                 $("#tone_arm").css({ 'visibility': 'hidden' }).fadeOut(500);
                 $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
                 isOpened = true;
             } else {
-                $(this).css({ 'transform': 'rotateX(0deg)' }).delay(500);
+                $('#record_cover').css({ 'transform': 'rotateX(0deg)' }).delay(500);
                 setTimeout(function () {
                     $("#tone_arm, #tone").css({ 'visibility': 'visible' }).fadeIn(500);
                 }, 500);
 
                 isOpened = false;
             }
-        })
+        }).hover(function () {
+            $('#record_cover').css({ 'top': '50px' });
+        }, function () {
+            $('#record_cover').css({ 'top': '72px' });
+        });
         $(".list_container").animate({
             'left': '1240px',
             'rotate': '5deg'
