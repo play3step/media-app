@@ -22,10 +22,13 @@
 
 #btn_exit {
     background-color: transparent;
+    width: 17.374px;
+    height: 17.374px;
+    flex-shrink: 0;
     border: none;
     position: absolute;
-    left: 47px;
-    top: 40px;
+    left: 21px;
+    top: 18px;
 
 }
 
@@ -136,6 +139,7 @@
     height: 764px;
     background-size: cover;
 }
+
 .list_container::before {
     content: '';
     position: absolute;
@@ -146,6 +150,7 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
+
 .list_item {
     position: absolute;
     top: 305px;

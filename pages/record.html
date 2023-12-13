@@ -81,15 +81,15 @@
     for (let i = 0; i < currentAlbum.songs.length; i++) {
         let title = currentAlbum.songs[i].title;
         if (themeId == 0) {
-            $(".title").css({ 'background-image': 'url("../gif/밴드.gif")' })
+            $("#lp").css({ 'background-image': 'url("../png/밴드.png")' })
         } else if (themeId == 1) {
-            $("#lp").css({ 'background-image': 'url("../gif/발라드.gif")' })
+            $("#lp").css({ 'background-image': 'url("../png/발라드.png")' })
         } else if (themeId == 2) {
-            $("#lp").css({ 'background-image': 'url("../gif/EDM.gif")' })
+            $("#lp").css({ 'background-image': 'url("../png/EDM.png")' })
         } else if (themeId == 3) {
-            $("#lp").css({ 'background-image': 'url("../gif/재즈.gif")' })
+            $("#lp").css({ 'background-image': 'url("../png/재즈.png")' })
         } else if (themeId == 4) {
-            $("#lp").css({ 'background-image': 'url("../gif/발라드.gif")' })
+            $("#lp").css({ 'background-image': 'url("../png/발라드.png")' })
         }
         listItem.append(`<h2 class="title">${i + 1}.  ${title}</h2>`);
         listDiv.append(listItem);
