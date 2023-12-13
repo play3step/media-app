@@ -20,7 +20,9 @@
                 <img src="../png/exit_button.png">
             </button>
             <div id="record_cover">
-                <div id="lp"></div>
+                <div id="lp">
+                    <img>
+                </div>
                 <div id="tone"></div>
                 <div id="tone_arm"></div>
             </div>
@@ -96,32 +98,31 @@
     }
 
     function setLpGif(themeId) {
+        $("#lp").css({ 'background-image': 'url(" ")' });
         if (themeId == 0) {
-            $("#lp").css({ 'background-image': 'url("../gif/밴드.gif")' })
+            $("#lp").css({ 'background-image': 'url(../gif/밴드.gif)' })
         } else if (themeId == 1) {
-            $("#lp").css({ 'background-image': 'url("../gif/발라드.gif")' })
+            $("#lp").css({ 'background-image': 'url(../gif/발라드.gif)' })
         } else if (themeId == 2) {
-            $("#lp").css({ 'background-image': 'url("../gif/EDM.gif")' })
+            $("#lp").css({ 'background-image': 'url(../gif/EDM.gif)' })
         } else if (themeId == 3) {
-            $("#lp").css({ 'background-image': 'url("../gif/재즈.gif")' })
+            $("#lp").css({ 'background-image': 'url(../gif/재즈.gif)' })
         } else if (themeId == 4) {
-            $("#lp").css({ 'background-image': 'url("../gif/발라드.gif")' })
+            $("#lp").css({ 'background-image': 'url(../gif/발라드.gif)' })
         }
     }
     function setLpImg(themeId) {
-        let lp = $('lp');
-        let lpImg = lp.find('img');
-        lpImg.remove();
+           $("#lp").css({ 'background-image': 'none' });
         if (themeId == 0) {
-            $("#lp").css({ 'background-image': 'url("../png/밴드.png")' })
+            $("#lp").css({ 'background-image': 'url(../png/밴드.png)' })
         } else if (themeId == 1) {
-            $("#lp").css({ 'background-image': 'url("../png/발라드.png")' })
+            $("#lp").css({ 'background-image': 'url(../png/발라드.png)' })
         } else if (themeId == 2) {
-            $("#lp").css({ 'background-image': 'url("../png/EDM.png")' })
+            $("#lp").css({ 'background-image': 'url(../png/EDM.png)' })
         } else if (themeId == 3) {
-            $("#lp").css({ 'background-image': 'url("../png/재즈.png")' })
+            $("#lp").css({ 'background-image': 'url(../png/재즈.png)' })
         } else if (themeId == 4) {
-            $("#lp").css({ 'background-image': 'url("../png/발라드.png")' })
+            $("#lp").css({ 'background-image': 'url(../png/발라드.png)' })
         }
     }
     function stopTonearm() {
