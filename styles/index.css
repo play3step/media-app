@@ -59,7 +59,10 @@
     height: 190px;
     top: 88px;
     left: 682px;
-    background-color: aqua;
+    background-image: url("../png/이상기후.png");
+    background-position: center;
+    background-size: cover;
+
 }
 
 .theme2 {
@@ -69,6 +72,9 @@
     top: 88px;
     right: 672px;
     background-color: aqua;
+    background-image: url("../png/나무.png");
+    background-position: center;
+    background-size: cover;
 
 }
 

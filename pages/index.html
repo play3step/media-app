@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../styles/index.css">
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-
 </head>
 
 <body>
@@ -88,7 +87,7 @@
     $("#draggable .theme1, #draggable .theme2, #draggable .theme3, #draggable .theme4, #draggable .theme5").on("mouseover", function () {
         var audioFile = $(this).data("audio");
         currentAudio.src = audioFile;
-        currentAudio.currentTime =30;
+        currentAudio.currentTime =70;
         currentAudio.play();
 
         $(this).find(".shadow-fairy").css({

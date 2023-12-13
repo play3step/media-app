@@ -40,7 +40,7 @@ export const musicData = [
                 author: '카더가든(Car-The Garden)'
             },
             {
-                audio: '../musics/기다린 만큼, 더..mp3',
+                audio: '../musics/기다린 만큼, 더.mp3',
                 title: '기다린 만큼, 더.',
                 author: '카더가든(Car-The Garden)'
             },
