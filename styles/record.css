@@ -316,3 +316,11 @@
     margin-top: 32px;
 
 }
+#stage{
+    width: 1023px;
+    height: 698px;
+    position: absolute;
+    left: 172px;
+    top: 72px;
+    z-index: 1;
+}
