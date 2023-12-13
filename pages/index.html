@@ -91,7 +91,7 @@
         currentAudio.play();
 
         $(this).css({
-            'box-shadow': 'inset 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px 5px #FFA500',
+            'box-shadow': 'inset 0 0 3px rgba(0, 0, 0, 0.1), 0 0 15px 5px #FFA666',
 
         });
         $(this).find(".shadow-fairy").css({
@@ -110,7 +110,7 @@
     $("#turnTables").droppable({
         over: function (event, ui) {
             $(this).css({
-                'box-shadow': 'inset 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px 5px #FFA500',
+                'box-shadow': 'inset 0 0 3px rgba(0, 0, 0, 0.1), 0 0 15px 5px #FFA666',
             });
         },
         out: function (event, ui) {
@@ -119,10 +119,6 @@
             });
         },
         drop: function (event, ui) {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("재생");
             var themeId = $(ui.draggable).data("id");
             window.location.href = "./record.html?themeId=" + themeId; //파라메타로 데이터 전송
         }

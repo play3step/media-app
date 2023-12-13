@@ -26,6 +26,7 @@
                 <img src="../png/exit_button.png">
             </button>
             <div id="stage"></div>
+
             <div id="record_cover">
                 <div id="lp">
                     <img>
@@ -33,11 +34,13 @@
                 <div id="tone"></div>
                 <div id="tone_arm"></div>
             </div>
+
             <div id="play_list" class="list_container">
                 <div id="list_item">
                     <span class="title"></span>
                 </div>
             </div>
+
             <div id="controller_box">
                 <div id="current_music">
                     <div id="current_albume">
@@ -304,13 +307,18 @@
                 $('#record_cover').css({ 'transform': 'rotateX(180deg)' })
                 $("#tone_arm").css({ 'visibility': 'hidden' }).fadeOut(500);
                 $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
+                $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
+                $("#btn_fairy_text").text("레코더판 보기");
                 isOpened = true;
+                
                 setStage(themeId);
             } else {
                 $('#record_cover').css({ 'transform': 'rotateX(0deg)' }).delay(500);
                 setTimeout(function () {
                     $("#tone_arm, #tone").css({ 'visibility': 'visible' }).fadeIn(500);
                 }, 500);
+                $("#btn_fairy_text").text("요정 관람하기");
+
 
                 isOpened = false;
             }
@@ -325,6 +333,7 @@
         }, 500).animate({
             'rotate': '-5deg'
         });
+        
         $('#btn_play').click(function () {
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
