@@ -27,7 +27,7 @@ export const musicData = [
     },
     {
         albume_title:'Car-The Garden-Tree',
-        albume_image:'../png/나무.png',
+        albume_image:'../png/발라드_lp_1.png',
         songs:[
             {
                 audio: '../musics/Tree(나무).mp3',
@@ -79,33 +79,33 @@ export const musicData = [
     },
     {
         albume_title:'Johannes Brahms',
-        albume_image:'../png/classical_LP.png',
+        albume_image:'../png/클래식_lp_1.png',
         songs:[
             {
                 audio: '../musics/Op. 98 - 1. Allegro non troppo.mp3',
-                title: 'allegro Non Troppo',
+                title: 'Symphony No.4 In E Minor. Op.98 1:allegro Non Troppo',
                 author: 'Johannes Brahms'
             },
             {
                 audio: '../musics/Op. 98 - 2. Andante moderato.mp3',
-                title: 'andante Moderato',
+                title: 'Symphony No.4 In E Minor. Op.98 2:andante Moderato',
                 author: 'Johannes Brahms'
             },
             {
                 audio: '../musics/Op. 98 - 3. Allegro giocoso - Poco meno presto - Tempo I.mp3',
-                title: 'Presto-tempo',
+                title: 'Symphony No.4 In E Minor. Op.98 3:allegro Giocoso-poco Meno Presto-tempo 1',
                 author: 'Johannes Brahms'
             },
             {
                 audio: '../musics/Op. 98 - 4. Allegro energico e passionato - Più allegro.mp3',
-                title: 'Passionato-piu Allegro',
+                title: 'Symphony No.4 In E Minor. Op.98 4:allegro Energico E Passionato-piu Allegro',
                 author: 'Johannes Brahms'
             }
         ],
     },
     {
         albume_title:'Johannes Brahms',
-        albume_image:'../png/winLP.png',
+        albume_image:'../png/클래식_lp_1.png',
         songs:[
             {
                 audio: '../musics/Op. 98 - 1. Allegro non troppo.mp3',
