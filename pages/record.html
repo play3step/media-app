@@ -239,7 +239,7 @@ Arranged by 쏜애플(THORNAPPLE)
                 isOpened = false;
             }
         }).hover(function () {
-            $('#record_cover').css({ 'top': '50px' });
+            if(!isOpened)$('#record_cover').css({ 'top': '50px' });
         }, function () {
             $('#record_cover').css({ 'top': '72px' });
         });
