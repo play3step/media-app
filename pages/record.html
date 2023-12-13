@@ -19,7 +19,7 @@
                 <img src="../png/exit_button.png">
             </button>
             <div id="record_cover">
-                <div id ="lp"></div>
+                <div id="lp"></div>
                 <div id="tone"></div>
                 <div id="tone_arm"></div>
             </div>
@@ -37,7 +37,7 @@
                         </div>
                         <span id="total_time_display">-2:56</span>
                     </div>
-                   
+
                     <div style="display: flex; flex-direction: row;">
                         <button id="btn_prev">
                             <img src="../png/skip_previous.png">
@@ -74,11 +74,79 @@
     $('.list_container').css("background-image", `url(${albumImage})`);
     let listDiv = $("#play_list");
     let listItem = $('<div class="list_item">');
-        
+
     for (let i = 0; i < currentAlbum.songs.length; i++) {
         let title = currentAlbum.songs[i].title;
         listItem.append('<h2 class="title">' + title + '</h2>');
         listDiv.append(listItem);
+    }
+    function setLpGif(themeId) {
+        if (themeId == 0) {
+            $("#lp").css({ 'background-image': 'url("../gif/밴드.gif")' })
+        } else if (themeId == 1) {
+            $("#lp").css({ 'background-image': 'url("../gif/발라드.gif")' })
+        } else if (themeId == 2) {
+            $("#lp").css({ 'background-image': 'url("../gif/EDM.gif")' })
+        } else if (themeId == 3) {
+            $("#lp").css({ 'background-image': 'url("../gif/재즈.gif")' })
+        } else if (themeId == 4) {
+            $("#lp").css({ 'background-image': 'url("../gif/발라드.gif")' })
+        }
+    }
+    function setLpImg(themeId) {
+        let lp = $('lp');
+        let lpImg = lp.find('img');
+        lpImg.remove();
+        if (themeId == 0) {
+            $("#lp").css({ 'background-image': 'url("../png/밴드.png")' })
+        } else if (themeId == 1) {
+            $("#lp").css({ 'background-image': 'url("../png/발라드.png")' })
+        } else if (themeId == 2) {
+            $("#lp").css({ 'background-image': 'url("../png/EDM.png")' })
+        } else if (themeId == 3) {
+            $("#lp").css({ 'background-image': 'url("../png/재즈.png")' })
+        } else if (themeId == 4) {
+            $("#lp").css({ 'background-image': 'url("../png/발라드.png")' })
+        }
+    }
+    function stopTonearm() {
+        $(this).css({ 'transform': 'rotateZ(0deg)' });
+        $(this).css({ 'left': '788px' });
+        $(this).css({ 'top': '15px' });
+        event.stopPropagation();
+        toggleTonearm = false;
+    }
+    function getCurrentIndex(index) {
+        let selectedSong = currentAlbum.songs[index];
+        title = selectedSong.title;
+        author = selectedSong.author;
+        let newAudio = new Audio(selectedSong.audio);
+        $('.title').css('color', '');
+        $('.title:contains("' + title + '")').css('color', 'red');
+        if (currentAudio) {
+            currentAudio.pause();
+        }
+        newAudio.play();
+        currentAudio = newAudio;
+    }
+    function getCurrentTitle(current_title) {
+        for (let i = 0; i < musicData.length; i++) {
+            let album = musicData[i];
+            for (let j = 0; j < album.songs.length; j++) {
+                let song = album.songs[j];
+
+                if (song.title === current_title) {
+                    console.log(song.title)
+                    $('.title').eq(j + 1).css('color', 'red');
+                    break;
+                }
+            }
+        }
+    }
+    function formatTime(seconds) {
+        let minutes = Math.floor(seconds / 60);
+        let remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
     $(document).ready(function () {
         let currentAudio = audio
@@ -96,11 +164,7 @@
 
         }, 50);
 
-        function formatTime(seconds) {
-            let minutes = Math.floor(seconds / 60);
-            let remainingSeconds = seconds % 60;
-            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-        }
+
 
         $("#btn_exit").click(function () {
             window.location.href = "./index.html"
@@ -114,7 +178,7 @@
                 $(this).css({ 'transform': 'rotateZ(45deg)' });
                 $(this).css({ 'left': '831px' });
                 $(this).css({ 'top': '28px' });
-
+                setLpGif(themeId);
                 event.stopPropagation();
                 toggleTonearm = true;
                 currentAudio.play();
@@ -125,6 +189,7 @@
                 $(this).css({ 'top': '15px' });
                 event.stopPropagation();
                 toggleTonearm = false;
+                setLpImg(themeId);
                 currentAudio.pause();
                 btnPlayImg.attr('src', '../png/play_arrow.png').appendTo('#btn_play');
             }
@@ -164,6 +229,7 @@
                 event.stopPropagation();
                 toggleTonearm = true;
                 currentAudio.play();
+                setLpGif(themeId);
                 getCurrentTitle(title);
             } else {
                 $("#tone_arm").css({ 'transform': 'rotateZ(0deg)' });
@@ -172,6 +238,7 @@
                 btnPlayImg.attr('src', '../png/play_arrow.png').appendTo('#btn_play');
                 event.stopPropagation();
                 toggleTonearm = false;
+                setLpImg(themeId);
                 currentAudio.pause();
             }
         });
@@ -193,33 +260,7 @@
             getCurrentIndex(prevIndex);
         });
 
-        function getCurrentIndex(index) {
-            let selectedSong = currentAlbum.songs[index];
-            title = selectedSong.title;
-            author = selectedSong.author;
-            let newAudio = new Audio(selectedSong.audio);
-            $('.title').css('color', '');
-            $('.title:contains("' + title + '")').css('color', 'red');
-            if (currentAudio) {
-                currentAudio.pause();
-            }
-            newAudio.play();
-            currentAudio = newAudio;
-        }
-        function getCurrentTitle(current_title) {
-            for (let i = 0; i < musicData.length; i++) {
-                let album = musicData[i];
-                for (let j = 0; j < album.songs.length; j++) {
-                    let song = album.songs[j];
 
-                    if (song.title === current_title) {
-                        console.log(song.title)
-                        $('.title').eq(j + 1).css('color', 'red');
-                        break;
-                    }
-                }
-            }
-        }
     });
 
 

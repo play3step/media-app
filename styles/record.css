@@ -205,11 +205,12 @@
 }
 
 #lp {
-    background-image: url("../png/lp.png");
+    background-size: cover;
     width: 629px;
     height: 572.5px;
     flex-shrink: 0;
     position: inherit;
     top: 21px;
     left: 68px;
+    z-index: 1;
 }
