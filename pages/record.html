@@ -130,19 +130,7 @@
         event.stopPropagation();
         toggleTonearm = false;
     }
-    function getCurrentIndex(index) {
-        let selectedSong = currentAlbum.songs[index];
-        title = selectedSong.title;
-        author = selectedSong.author;
-        let newAudio = new Audio(selectedSong.audio);
-        $('.title').css('color', '');
-        $('.title:contains("' + title + '")').css('color', 'red');
-        if (currentAudio) {
-            currentAudio.pause();
-        }
-        newAudio.play();
-        currentAudio = newAudio;
-    }
+
     function getCurrentTitle(current_title) {
         for (let i = 0; i < musicData.length; i++) {
             let album = musicData[i];
@@ -261,7 +249,7 @@
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
             btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
-            getCurrentIndex(nextIndex);
+            getCurrentIndex(nextIndex, currentAudio);
         });
 
         $('#btn_prev').click(function () {
@@ -272,7 +260,19 @@
             btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
             getCurrentIndex(prevIndex);
         });
-
+        function getCurrentIndex(index) {
+            let selectedSong = currentAlbum.songs[index];
+            title = selectedSong.title;
+            author = selectedSong.author;
+            let newAudio = new Audio(selectedSong.audio);
+            $('.title').css('color', '');
+            $('.title:contains("' + title + '")').css('color', 'red');
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+            newAudio.play();
+            currentAudio = newAudio;
+        }
 
     });
 
