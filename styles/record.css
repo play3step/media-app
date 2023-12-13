@@ -219,9 +219,11 @@
 }
 
 #current_albume {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     flex-shrink: 0;
+    background-size: cover;
+    border-radius: 50%;
 }
 
 #current_song {

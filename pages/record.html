@@ -26,7 +26,6 @@
                 <img src="../png/exit_button.png">
             </button>
             <div id="record_cover">
-               
                 <div id="lp">
                     <img>
                 </div>
@@ -40,12 +39,13 @@
             </div>
             <div id="controller_box">
                 <div id="current_music">
-                    <div id="current_albume"></div>
-                    <div id="current_song">
-                        <div id="current_title">제목</div>
-                        <div id="author">작곡</div>
+                    <div id="current_albume">
+                        
                     </div>
-
+                    <div id="current_song">
+                        <div id="current_title"></div>
+                        <div id="author"></div>
+                    </div>
                 </div>
                 <div id="music_controller">
                     <div id="progress_bar_container">
@@ -86,6 +86,11 @@
     let audio = new Audio(firstSong.audio);
     let toggleTonearm = false;
 
+
+    $('#current_title').text(title);
+    $('#author').text(author);
+    author
+    $('#current_albume').css("background-image", `url(${albumImage})`);
     $('.list_container').css("background-image", `url(${albumImage})`);
     let listDiv = $("#play_list");
     let listItem = $('<div class="list_item">');
@@ -107,7 +112,6 @@ Arranged by 쏜애플(THORNAPPLE)
                 </div>
                 </div>`);
             listDiv.append(listItem);
-
 
         } else if (themeId == 1) {
 
@@ -180,7 +184,6 @@ Arranged by 쏜애플(THORNAPPLE)
             let album = musicData[i];
             for (let j = 0; j < album.songs.length; j++) {
                 let song = album.songs[j];
-
                 if (song.title === current_title) {
                     console.log(song.title)
                     $('.title').eq(j + 1).css('color', '#ffffff');
@@ -313,6 +316,8 @@ Arranged by 쏜애플(THORNAPPLE)
             title = selectedSong.title;
             author = selectedSong.author;
             let newAudio = new Audio(selectedSong.audio);
+            $('#current_title').text(title);
+
             $('.title').css('color', '');
             $('.title:contains("' + title + '")').css('color', '#ffffff');
             if (currentAudio) {
