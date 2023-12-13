@@ -170,8 +170,6 @@ Arranged by 쏜애플(THORNAPPLE)
         } else if (themeId == 4) {
 
         }
-
-
     }
 
     function setLpGif(themeId) {
@@ -212,7 +210,7 @@ Arranged by 쏜애플(THORNAPPLE)
         } else if (themeId == 3) {
             $("#stage").css({ 'background-image': 'url(../gif/클래식_무대.gif)' })
         } else if (themeId == 4) {
-            $("#stage").css({ 'background-image': 'url(../png/발라드.png)' })
+            $("#stage").css({ 'background-image': 'url(../gif/클래식_무대.gif)' })
         }
     }
     function stopTonearm() {
@@ -365,6 +363,7 @@ Arranged by 쏜애플(THORNAPPLE)
 
             // 수정된 제목을 #current_title 요소에 설정합니다.
             $('#current_title').text(trimmedTitle);
+            $('#author').text(author);
             $('.title').css('color', '');
             $('.title:contains("' + title + '")').css('color', '#ffffff');
             if (currentAudio) {

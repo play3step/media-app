@@ -70,7 +70,7 @@
     height: 190px;
     top: 88px;
     left: 682px;
-    background-image: url("../png/이상기후.png");
+    background-image: url("../png/밴드표지.png");
     background-position: center;
     background-size: cover;
 
@@ -83,7 +83,7 @@
     top: 88px;
     right: 672px;
 
-    background-image: url("../png/나무.png");
+    background-image: url("../png/발라드표지.png");
     background-position: center;
     background-size: cover;
 
@@ -96,7 +96,7 @@
     bottom: 393px;
     left: 493px;
 
-    background-image: url("../png/EDM_LP.png");
+    background-image: url("../png/이디엠표지.png");
     background-position: center;
     background-size: cover;
 }
@@ -107,7 +107,7 @@
     height: 190px;
     bottom: 393px;
     left: 868px;
-    background-image: url("../png/classical_LP.png");
+    background-image: url("../png/클래식표지.png");
     background-position: center;
     background-size: cover;
 }
@@ -118,7 +118,7 @@
     height: 190px;
     bottom: 393px;
     right: 484px;
-    background-image: url("../png/winLP.png");
+    background-image: url("../png/캐롤표지.png");
     background-position: center;
     background-size: cover;
 

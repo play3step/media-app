@@ -105,27 +105,27 @@ export const musicData = [
     },
     {
         albume_title:'Johannes Brahms',
-        albume_image:'../png/클래식_lp_1.png',
+        albume_image:'../png/winLP.png',
         songs:[
             {
-                audio: '../musics/Op. 98 - 1. Allegro non troppo.mp3',
-                title: 'allegro Non Troppo',
-                author: 'Johannes Brahms'
+                audio: '../musics/Wham  Last Christmas Official Video.mp3',
+                title: 'Wham!',
+                author: 'Last Christmas'
             },
             {
-                audio: '../musics/Op. 98 - 2. Andante moderato.mp3',
-                title: 'andante Moderato',
-                author: 'Johannes Brahms'
+                audio: '../musics/Its Beginning to Look a Lot Like Christmas Official Audio.mp3',
+                title: 'Beginning to Look a Lot Like Christmas',
+                author: 'Perry ComoIt'
             },
             {
-                audio: '../musics/Op. 98 - 3. Allegro giocoso - Poco meno presto - Tempo I.mp3',
-                title: 'Presto-tempo',
-                author: 'Johannes Brahms'
+                audio: '../musics/Justin Bieber  Mistletoe Official Music Video.mp3',
+                title: 'Mistleoe',
+                author: 'justin Bieber'
             },
             {
-                audio: '../musics/Op. 98 - 4. Allegro energico e passionato - Più allegro.mp3',
-                title: 'Passionato-piu Allegro',
-                author: 'Johannes Brahms'
+                audio: '../musics/White Christmas.mp3',
+                title: 'White Christmas',
+                author: 'Clyde McPhatter'
             }
         ],
     }

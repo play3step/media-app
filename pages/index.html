@@ -91,7 +91,8 @@
         currentAudio.play();
 
         $(this).css({
-            'box-shadow': 'inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px 5px #FFA500' // 내부 그림자와 주황색 그림자 추가
+            'box-shadow': 'inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px 5px #FFA500',
+            'opacity': '0.7'
         });
         $(this).find(".shadow-fairy").css({
             display: "block"
@@ -102,16 +103,17 @@
         currentAudio.currentTime = 0;
         $(this).find(".shadow-fairy").hide();
         $(this).css({
-            'box-shadow': 'none' // 마우스 아웃 시 그림자 제거
+            'box-shadow': 'none',
+            'opacity': '1'
+
         });
     });
-
 
     $("#turnTables").droppable({
         over: function (event, ui) {
             // 드래그된 요정이 턴테이블 위에 있을 때
             $(this).css({
-                'box-shadow': '0 0 15px 5px #FFA500' // 주황색 그림자 추가
+                'box-shadow': '0 0 15px 5px #FFA500'
             });
         },
         out: function (event, ui) {
