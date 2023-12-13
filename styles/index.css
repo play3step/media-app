@@ -4,10 +4,6 @@
     padding: 0;
 }
 
-body {
-    cursor: url('../png/point.png'), auto;
-    
-}
 
 .fairy-image {
     position: absolute;
@@ -45,12 +41,12 @@ body {
 }
 
 #turnTables {
-    width: 356px;
-    height: 120px;
+    width: 406px;
+    height: 140px;
     border: 1px solid;
     position: absolute;
-    bottom: 100px;
-    left: 41%;
+    bottom: 30px;
+    left: 39.5%;
 }
 .ui-widget-header{
     background-color: rgba(255, 255, 255, 0);
@@ -61,8 +57,8 @@ body {
     position: absolute;
     width: 190px;
     height: 190px;
-    top: 129px;
-    left: 542px;
+    top: 88px;
+    left: 682px;
     background-color: aqua;
 }
 
@@ -70,8 +66,8 @@ body {
     position: absolute;
     width: 190px;
     height: 190px;
-    top: 129px;
-    left: 865px;
+    top: 88px;
+    right: 672px;
     background-color: aqua;
 
 }
@@ -80,8 +76,8 @@ body {
     position: absolute;
     width: 190px;
     height: 190px;
-    top: 129px;
-    right: 535px;
+    bottom: 393px; 
+    left: 493px;
     background-color: aqua;
 
 }
@@ -90,8 +86,8 @@ body {
     position: absolute;
     width: 190px;
     height: 190px;
-    bottom: 392px;    
-    left: 541px;
+    bottom: 393px; 
+    left: 868px;
     background-color: aqua;
 
 }
@@ -100,8 +96,8 @@ body {
     position: absolute;
     width: 190px;
     height: 190px;
-    bottom: 392px;    
-    right: 535px;
+    bottom: 393px; 
+    right: 484px;
     background-color: aqua;
 
 }
