@@ -62,7 +62,6 @@
     let themeId = urlParams.get('themeId');
     let currentAlbum = musicData[Number(themeId)];
 
-    // 현재 재생 중인 오디오
     let albumTitle = currentAlbum.albume_title;
     let albumImage = currentAlbum.albume_image;
     let firstSong = currentAlbum.songs[0];
@@ -77,12 +76,11 @@
     // 재생 목록에 추가
     for (let i = 0; i < currentAlbum.songs.length; i++) {
         let title = currentAlbum.songs[i].title;
-
-
         listItem.append('<h2 class="title">' + title + '</h2>');
         listDiv.append(listItem);
     }
     $(document).ready(function () {
+        let currentAudio = audio
         setInterval(function () {
             // Update current time display
             let currentTime = Math.floor(currentAudio.currentTime);
@@ -177,39 +175,33 @@
             }
         });
         $('#btn_next').click(function () {
-            playNextSong();
+            let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
+            let nextIndex = (currentIndex + 1) % currentAlbum.songs.length;
+            let btnPlay = $('#btn_play');
+            let btnPlayImg = btnPlay.find('img');
+            btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
+            getCurrentIndex(nextIndex);
         });
 
         $('#btn_prev').click(function () {
-            playPreviousSong();
-        });
-
-        function playNextSong() {
-            let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
-            let nextIndex = (currentIndex + 1) % currentAlbum.songs.length;
-            playSongByIndex(nextIndex);
-        }
-
-        function playPreviousSong() {
             let currentIndex = currentAlbum.songs.findIndex(song => song.title === title);
             let prevIndex = (currentIndex - 1 + currentAlbum.songs.length) % currentAlbum.songs.length;
-            playSongByIndex(prevIndex);
-        }
+            let btnPlay = $('#btn_play');
+            let btnPlayImg = btnPlay.find('img');
+            btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
+            getCurrentIndex(prevIndex);
+        });
 
-        function playSongByIndex(index) {
+        function getCurrentIndex(index) {
             let selectedSong = currentAlbum.songs[index];
             title = selectedSong.title;
             author = selectedSong.author;
             let newAudio = new Audio(selectedSong.audio);
-
             $('.title').css('color', '');
-
             $('.title:contains("' + title + '")').css('color', 'red');
-
             if (currentAudio) {
                 currentAudio.pause();
             }
-
             newAudio.play();
             currentAudio = newAudio;
         }
@@ -227,47 +219,6 @@
                 }
             }
         }
-
-        let currentAudio = audio
-
-        $('.title').click(function (event) {
-            event.stopPropagation();
-
-            // Remove red color from all titles
-            $('.title').css('color', '');
-
-            // Set the clicked title to red
-            $(this).css('color', 'red');
-            let index = $(this).index();
-            let clickedTitle = $('.title').text();
-            let newAudio;
-
-            // musicData 배열을 순회하며 클릭된 제목과 일치하는 곡을 찾음
-            for (let i = 0; i < musicData.length; i++) {
-                let album = musicData[i];
-                for (let j = 0; j < album.songs.length; j++) {
-                    let song = album.songs[j];
-                    if (song.title === clickedTitle) {
-                        newAudio = new Audio(song.audio);
-                        break;
-                    }
-                }
-                if (newAudio) {
-                    break;
-                }
-            }
-
-            if (newAudio) {
-                if (currentAudio) {
-                    currentAudio.pause();
-                }
-                newAudio.play();
-                currentAudio = newAudio;
-            }
-        });
-
-
-
     });
 
 

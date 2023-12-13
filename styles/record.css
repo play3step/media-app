@@ -92,7 +92,6 @@
     left: 90px;
     top: 105px;
     transform-origin: center top;
-    /*backface-visibility: hidden;*/
     transition: 2s;
 }
 
@@ -163,12 +162,12 @@
     display: flex;
     align-items: center;
     width: 332px;
-    margin: 0 auto; /* 가운데 정렬을 위함 */
+    margin: 0 auto; 
 }
 
 
 #progress_indicator {
-    background: #FFFFFF; /* 프로그레스 바의 색상 */
+    background: #FFFFFF; 
     height: 100%;
     border-radius: 10px; 
     width: 0%; 
