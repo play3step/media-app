@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/record.css">
-    
+
 </head>
 
 <body>
@@ -112,7 +112,7 @@
         }
     }
     function setLpImg(themeId) {
-           $("#lp").css({ 'background-image': 'none' });
+        $("#lp").css({ 'background-image': 'none' });
         if (themeId == 0) {
             $("#lp").css({ 'background-image': 'url(../png/밴드.png)' })
         } else if (themeId == 1) {
@@ -132,19 +132,7 @@
         event.stopPropagation();
         toggleTonearm = false;
     }
-    function getCurrentIndex(index,currentAudio) {
-        let selectedSong = currentAlbum.songs[index];
-        title = selectedSong.title;
-        author = selectedSong.author;
-        let newAudio = new Audio(selectedSong.audio);
-        $('.title').css('color', '');
-        $('.title:contains("' + title + '")').css('color', 'red');
-        if (currentAudio) {
-            currentAudio.pause();
-        }
-        newAudio.play();
-        currentAudio = newAudio;
-    }
+
     function getCurrentTitle(current_title) {
         for (let i = 0; i < musicData.length; i++) {
             let album = musicData[i];
@@ -263,7 +251,7 @@
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
             btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
-            getCurrentIndex(nextIndex,currentAudio);
+            getCurrentIndex(nextIndex, currentAudio);
         });
 
         $('#btn_prev').click(function () {
@@ -272,9 +260,21 @@
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
             btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
-            getCurrentIndex(prevIndex,currentAudio);
+            getCurrentIndex(prevIndex);
         });
-
+        function getCurrentIndex(index) {
+            let selectedSong = currentAlbum.songs[index];
+            title = selectedSong.title;
+            author = selectedSong.author;
+            let newAudio = new Audio(selectedSong.audio);
+            $('.title').css('color', '');
+            $('.title:contains("' + title + '")').css('color', 'red');
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+            newAudio.play();
+            currentAudio = newAudio;
+        }
 
     });
 
