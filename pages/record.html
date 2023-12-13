@@ -25,6 +25,7 @@
             <button id="btn_exit">
                 <img src="../png/exit_button.png">
             </button>
+            <div id = "stage"></div>
             <div id="record_cover">
                 <div id="lp">
                     <img>
@@ -171,6 +172,19 @@ Arranged by 쏜애플(THORNAPPLE)
             $("#lp").css({ 'background-image': 'url(../png/발라드.png)' })
         }
     }
+    function setStage(themeId){
+        if (themeId == 0) {
+            $("#stage").css({ 'background-image': 'url(../gif/밴드_무대.gif)' })
+        } else if (themeId == 1) {
+            $("#stage").css({ 'background-image': 'url(../gif/발라드_무대.gif)' })
+        } else if (themeId == 2) {
+            $("#stage").css({ 'background-image': 'url(../gif/EDM_무대.gif)' })
+        } else if (themeId == 3) {
+            $("#stage").css({ 'background-image': 'url(../gif/클래식_무대.gif)' })
+        } else if (themeId == 4) {
+            $("#stage").css({ 'background-image': 'url(../png/발라드.png)' })
+        } 
+    }
     function stopTonearm() {
         $(this).css({ 'transform': 'rotateZ(0deg)' });
         $(this).css({ 'left': '788px' });
@@ -246,9 +260,11 @@ Arranged by 쏜애플(THORNAPPLE)
         $('#btn_fairy').click(function () {
             if (!isOpened) {
                 $('#record_cover').css({ 'transform': 'rotateX(180deg)' })
+              
                 $("#tone_arm").css({ 'visibility': 'hidden' }).fadeOut(500);
                 $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
                 isOpened = true;
+                setStage(themeId);
             } else {
                 $('#record_cover').css({ 'transform': 'rotateX(0deg)' }).delay(500);
                 setTimeout(function () {
@@ -258,7 +274,7 @@ Arranged by 쏜애플(THORNAPPLE)
                 isOpened = false;
             }
         }).hover(function () {
-            $('#record_cover').css({ 'top': '50px' });
+            if(!isOpened)$('#record_cover').css({ 'top': '50px' });
         }, function () {
             $('#record_cover').css({ 'top': '72px' });
         });
