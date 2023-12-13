@@ -78,6 +78,7 @@
         let title = currentAlbum.songs[i].title;
         listItem.append('<h2 class="title">' + title + '</h2>');
         listDiv.append(listItem);
+
     }
     $(document).ready(function () {
         let currentAudio = audio
@@ -92,7 +93,6 @@
             let progressWidth = (barWidth * currentAudio.currentTime / currentAudio.duration) || 0;
             $('#progress_bar > div').css('width', progressWidth);
             $('#progress_indicator > div').css('left', progressWidth);
-
         }, 50);
 
         function formatTime(seconds) {
