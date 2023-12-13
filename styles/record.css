@@ -22,10 +22,13 @@
 
 #btn_exit {
     background-color: transparent;
+    width: 17.374px;
+    height: 17.374px;
+    flex-shrink: 0;
     border: none;
     position: absolute;
-    left: 47px;
-    top: 40px;
+    left: 21px;
+    top: 18px;
 
 }
 
@@ -137,6 +140,20 @@
     background-size: cover;
 }
 
+<<<<<<< HEAD
+=======
+.list_container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+>>>>>>> 88360a0162672bf7a6dac5c6c04eb50ab83987d7
 .list_item {
     position: absolute;
     top: 245px;
@@ -201,6 +218,7 @@
     top: 21px;
     left: 68px;
     z-index: 1;
+<<<<<<< HEAD
 }
 
 .theme1-box{
@@ -212,4 +230,6 @@
 }
 .theme1-spn{
     font-size: 12px;
+=======
+>>>>>>> 88360a0162672bf7a6dac5c6c04eb50ab83987d7
 }
