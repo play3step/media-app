@@ -117,7 +117,7 @@
         event.stopPropagation();
         toggleTonearm = false;
     }
-    function getCurrentIndex(index) {
+    function getCurrentIndex(index,currentAudio) {
         let selectedSong = currentAlbum.songs[index];
         title = selectedSong.title;
         author = selectedSong.author;
@@ -248,7 +248,7 @@
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
             btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
-            getCurrentIndex(nextIndex);
+            getCurrentIndex(nextIndex,currentAudio);
         });
 
         $('#btn_prev').click(function () {
@@ -257,7 +257,7 @@
             let btnPlay = $('#btn_play');
             let btnPlayImg = btnPlay.find('img');
             btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
-            getCurrentIndex(prevIndex);
+            getCurrentIndex(prevIndex,currentAudio);
         });
 
 
