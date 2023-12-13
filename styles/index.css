@@ -1,8 +1,15 @@
-*{
+@font-face {
+    font-family: "Batang";
+    src: url("../font/KoPub\ Batang\ Medium.ttf") format("opentype");
+}
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Batang";
 }
+
 
 
 .fairy-image {
@@ -50,7 +57,8 @@
     border: none;
 
 }
-.ui-widget-header{
+
+.ui-widget-header {
     background-color: rgba(255, 255, 255, 0);
 
 }
@@ -84,7 +92,7 @@
     position: absolute;
     width: 190px;
     height: 190px;
-    bottom: 393px; 
+    bottom: 393px;
     left: 493px;
 
     background-image: url("../png/EDM_LP.png");
@@ -96,7 +104,7 @@
     position: absolute;
     width: 190px;
     height: 190px;
-    bottom: 393px; 
+    bottom: 393px;
     left: 868px;
     background-image: url("../png/classical_LP.png");
     background-position: center;
@@ -107,9 +115,11 @@
     position: absolute;
     width: 190px;
     height: 190px;
-    bottom: 393px; 
+    bottom: 393px;
     right: 484px;
-    background-color: aqua;
+    background-image: url("../png/winLP.png");
+    background-position: center;
+    background-size: cover;
 
 }
 
@@ -137,16 +147,16 @@
     height: 80px;
 }
 
-.fairy{
-    position: absolute;
-    left: -40px;
-    top: -50px;
-    display: none;
-}
-.shadow-fairy{
+.fairy {
     position: absolute;
     left: -40px;
     top: -50px;
     display: none;
 }
 
+.shadow-fairy {
+    position: absolute;
+    left: -40px;
+    top: -50px;
+    display: none;
+}
