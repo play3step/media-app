@@ -40,7 +40,7 @@ export const musicData = [
                 author: '카더가든(Car-The Garden)'
             },
             {
-                audio: '../musics/기다린 만큼, 더..mp3',
+                audio: '../musics/기다린 만큼, 더.mp3',
                 title: '기다린 만큼, 더.',
                 author: '카더가든(Car-The Garden)'
             },
@@ -76,6 +76,32 @@ export const musicData = [
                 author: 'Alan-Walker'
             }
         ],
+    },
+    {
+        albume_title:'Johannes Brahms',
+        albume_image:'../png/00.png',
+        songs:[
+            {
+                audio: '../musics/Op. 98 - 1. Allegro non troppo.mp3',
+                title: 'allegro Non Troppo',
+                author: 'Johannes Brahms'
+            },
+            {
+                audio: '../musics/Op. 98 - 2. Andante moderato.mp3',
+                title: 'andante Moderato',
+                author: 'Johannes Brahms'
+            },
+            {
+                audio: '../musics/Op. 98 - 3. Allegro giocoso - Poco meno presto - Tempo I.mp3',
+                title: 'Presto-tempo',
+                author: 'Johannes Brahms'
+            },
+            {
+                audio: '../musics/Op. 98 - 4. Allegro energico e passionato - Più allegro.mp3',
+                title: 'Passionato-piu Allegro',
+                author: 'Johannes Brahms'
+            }
+        ],
     }
-  
+
 ];
