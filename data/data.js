@@ -1,7 +1,7 @@
 export const musicData = [
     {
         albume_title:'이상기후',
-        albume_image:'../png/이상기후.png',
+        albume_image:'../png/밴드_lp_1.png',
         songs:[
             {
                 audio: '../musics/시퍼런 봄.mp3',
