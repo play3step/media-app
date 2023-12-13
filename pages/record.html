@@ -81,6 +81,7 @@
 
     let albumTitle = currentAlbum.albume_title;
     let albumImage = currentAlbum.albume_image;
+    let mini = currentAlbum.mini_image;
     let firstSong = currentAlbum.songs[0];
     let title = firstSong.title;
     let author = firstSong.author;
@@ -92,7 +93,7 @@
 
     $('#current_title').text(trimmedTitle);
     $('#author').text(author);
-    $('#current_albume').css("background-image", `url(${albumImage})`);
+    $('#current_albume').css("background-image", `url(${mini})`);
     $('.list_container').css("background-image", `url(${albumImage})`);
     let listDiv = $("#play_list");
     let listItem = $('<div class="list_item">');
@@ -108,8 +109,8 @@
                     <span>${formattedIndex}.  ${title}</span>
                     <div class="theme1-spn">
                         Composed by 윤성현, 심재현<br>
-lyrics by 윤성현<br>
-Arranged by 쏜애플(THORNAPPLE)
+                        lyrics by 윤성현<br>
+                        Arranged by 쏜애플(THORNAPPLE)
                         </div>
                 </div>
                 </div>`);
@@ -131,7 +132,6 @@ Arranged by 쏜애플(THORNAPPLE)
             `);
             }
             listDiv.append(listItem);
-
 
         } else if (themeId == 2) {
             if (i == 0) {
@@ -169,6 +169,21 @@ Arranged by 쏜애플(THORNAPPLE)
             listDiv.append(listItem);
         } else if (themeId == 4) {
 
+            if (i == 0) {
+                listItem.append(`
+                <div class="theme5-pos">
+                    <span class="title">${title}</span>
+                </div>
+            `);
+            } else {
+                // 첫 번째 요소가 아니라면 기존 theme2-box 내부에 새로운 내용을 추가
+                listItem.find('.theme5-pos').append(`
+                <div class ="theme5-box">
+                    <span class="title">${title}</span>
+                </div>
+            `);
+            }
+            listDiv.append(listItem);
         }
     }
 
@@ -183,7 +198,7 @@ Arranged by 쏜애플(THORNAPPLE)
         } else if (themeId == 3) {
             $("#lp").css({ 'background-image': 'url(../gif/재즈.gif)' })
         } else if (themeId == 4) {
-            $("#lp").css({ 'background-image': 'url(../gif/발라드.gif)' })
+            $("#lp").css({ 'background-image': 'url(../gif/캐롤.gif)' })
         }
     }
     function setLpImg(themeId) {
@@ -197,7 +212,7 @@ Arranged by 쏜애플(THORNAPPLE)
         } else if (themeId == 3) {
             $("#lp").css({ 'background-image': 'url(../png/재즈.png)' })
         } else if (themeId == 4) {
-            $("#lp").css({ 'background-image': 'url(../png/발라드.png)' })
+            $("#lp").css({ 'background-image': 'url(../png/캐롤LP.png)' })
         }
     }
     function setStage(themeId) {
@@ -210,7 +225,7 @@ Arranged by 쏜애플(THORNAPPLE)
         } else if (themeId == 3) {
             $("#stage").css({ 'background-image': 'url(../gif/클래식_무대.gif)' })
         } else if (themeId == 4) {
-            $("#stage").css({ 'background-image': 'url(../gif/클래식_무대.gif)' })
+            $("#stage").css({ 'background-image': 'url(../gif/캐롤_무대.gif)' })
         }
     }
     function stopTonearm() {
@@ -254,8 +269,6 @@ Arranged by 쏜애플(THORNAPPLE)
             $('#progress_indicator > div').css('left', progressWidth);
         }, 50);
 
-
-
         $("#btn_exit").click(function () {
             window.location.href = "./index.html"
         })
@@ -285,6 +298,7 @@ Arranged by 쏜애플(THORNAPPLE)
             }
         });
         let isOpened = false;
+
         $('#btn_fairy').click(function () {
             if (!isOpened) {
                 $('#record_cover').css({ 'transform': 'rotateX(180deg)' })
@@ -361,7 +375,6 @@ Arranged by 쏜애플(THORNAPPLE)
             let newAudio = new Audio(selectedSong.audio);
             let trimmedTitle = title.length > 10 ? title.substring(0, 10) + '...' : title;
 
-            // 수정된 제목을 #current_title 요소에 설정합니다.
             $('#current_title').text(trimmedTitle);
             $('#author').text(author);
             $('.title').css('color', '');

@@ -2,6 +2,7 @@ export const musicData = [
     {
         albume_title:'이상기후',
         albume_image:'../png/밴드_lp_1.png',
+        mini_image:'../png/밴드미니.png',
         songs:[
             {
                 audio: '../musics/시퍼런 봄.mp3',
@@ -28,6 +29,7 @@ export const musicData = [
     {
         albume_title:'Car-The Garden-Tree',
         albume_image:'../png/발라드_lp_1.png',
+        mini_image:'../png/발라드미니.png',
         songs:[
             {
                 audio: '../musics/Tree(나무).mp3',
@@ -54,6 +56,7 @@ export const musicData = [
     {
         albume_title:'Alan-Walker',
         albume_image:'../png/edm_lp_1.png',
+        mini_image:'../png/이디엠미니.png',
         songs:[
             {
                 audio: '../musics/Alan Walker Alone.mp3',
@@ -80,6 +83,7 @@ export const musicData = [
     {
         albume_title:'Johannes Brahms',
         albume_image:'../png/클래식_lp_1.png',
+        mini_image:'../png/클레식미니.png',
         songs:[
             {
                 audio: '../musics/Op. 98 - 1. Allegro non troppo.mp3',
@@ -105,7 +109,8 @@ export const musicData = [
     },
     {
         albume_title:'Johannes Brahms',
-        albume_image:'../png/winLP.png',
+        albume_image:'../png/캐롤LP-1.png',
+        mini_image:'../png/캐롤미니.png',
         songs:[
             {
                 audio: '../musics/Wham  Last Christmas Official Video.mp3',

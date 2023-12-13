@@ -73,6 +73,8 @@
     background-image: url("../png/밴드표지.png");
     background-position: center;
     background-size: cover;
+    z-index: 1;
+
 
 }
 
@@ -86,6 +88,8 @@
     background-image: url("../png/발라드표지.png");
     background-position: center;
     background-size: cover;
+    z-index: 1;
+
 
 }
 
@@ -99,6 +103,8 @@
     background-image: url("../png/이디엠표지.png");
     background-position: center;
     background-size: cover;
+    z-index: 1;
+
 }
 
 .theme4 {
@@ -110,6 +116,7 @@
     background-image: url("../png/클래식표지.png");
     background-position: center;
     background-size: cover;
+    z-index: 1;
 }
 
 .theme5 {
@@ -121,6 +128,7 @@
     background-image: url("../png/캐롤표지.png");
     background-position: center;
     background-size: cover;
+    z-index: 1;
 
 }
 
@@ -150,14 +158,22 @@
 
 .fairy {
     position: absolute;
-    left: -40px;
-    top: -50px;
+    left: -100px;
+    top: -70px;
     display: none;
+}
+.fairy img{
+    width: 160px;
+    height: 160px;
 }
 
 .shadow-fairy {
     position: absolute;
-    left: -40px;
-    top: -50px;
+    left: -100px;
+    top: -70px;
     display: none;
+}
+.shadow-fairy img{
+    width: 160px;
+    height: 160px;
 }

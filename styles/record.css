@@ -6,16 +6,14 @@
 @font-face {
     font-family: 'Pretendard';
     src: url(../font/Pretendard-SemiBold.otf);
-    font-weight: 600;
-}
-@font-face {
-    font-family: 'Pretendard';
-    src: url(../font/Pretendard-Regular.otf);
-    font-weight: 400;
 }
 @font-face {
     font-family: 'mediasansextended';
     src: url(../font/mediasansextended-regular.otf);
+}
+@font-face {
+    font-family: 'IrishGrover';
+    src: url(../font/IrishGrover-Regular.ttf);
 }
 #wrap {
     height: 1080px;
@@ -46,7 +44,6 @@
 }
 
 #btn_exit:active {
-
     box-shadow: inset -.3rem -.1rem 1.4rem #FBFBFB, inset .3rem .4rem .8rem #BEC5D0;
     cursor: pointer;
 
@@ -56,10 +53,18 @@
     background-color: transparent;
     border: none;
 }
+#btn_prev img{
+    width: 52px;
+    height: 52px;
+}
 
 #btn_next {
     background-color: transparent;
     border: none;
+}
+#btn_next img{
+    width: 52px;
+    height: 52px;
 }
 
 #btn_play {
@@ -67,6 +72,8 @@
     height: 63px;
     background-color: transparent;
     border: none;
+    margin-left: 16px;
+    margin-right: 16px;
 
 }
 
@@ -199,11 +206,14 @@
     border-radius: 10px;
     position: relative;
     margin: 0 15px;
+    margin-top: -60px;
+
 }
 
 #current_time_display,
 #total_time_display {
     color: #FFFFFF;
+    margin-top: -60px;
 
     font-size: 14px;
 }
@@ -327,6 +337,7 @@
     font-size: 32px;
     color: rgba(255, 255, 255, 0.5);
     margin-top: 190px;
+    font-family: 'Pretendard';
 }
 .theme2-box{
     margin-top: 32px;
@@ -366,8 +377,7 @@ p:nth-child(1){
     margin-top: 5px;
     font-size: 24px;
     color: rgba(255, 255, 255, 0.5);
-    font-family: 'mediasansextended';
-    font-weight: 400;
+    font-family: 'Pretendard';
 
 }
 .theme3-box{
@@ -387,4 +397,21 @@ p:nth-child(1){
 }
 .theme4-box{
     margin-top: 32px;
+}
+.theme5-pos{
+    margin-left: 70px;
+    margin-top: 11px;
+    font-size: 24px;
+    line-height: 32px;
+    width: 420px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'IrishGrover';
+    font-weight: 400;
+    text-align: justify;
+}
+.theme5-box{
+    margin-top: 24px;
+}
+.theme5-box:last-child{
+    margin-top: 39px;
 }
