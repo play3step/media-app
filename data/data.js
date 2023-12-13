@@ -53,7 +53,7 @@ export const musicData = [
     },
     {
         albume_title:'Alan-Walker',
-        albume_image:'../png/00.png',
+        albume_image:'../png/EDM_LP.png',
         songs:[
             {
                 audio: '../musics/Alan Walker Alone.mp3',
@@ -79,7 +79,7 @@ export const musicData = [
     },
     {
         albume_title:'Johannes Brahms',
-        albume_image:'../png/00.png',
+        albume_image:'../png/classical_LP.png',
         songs:[
             {
                 audio: '../musics/Op. 98 - 1. Allegro non troppo.mp3',

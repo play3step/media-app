@@ -73,7 +73,7 @@
     height: 190px;
     top: 88px;
     right: 672px;
-    background-color: aqua;
+
     background-image: url("../png/나무.png");
     background-position: center;
     background-size: cover;
@@ -86,8 +86,10 @@
     height: 190px;
     bottom: 393px; 
     left: 493px;
-    background-color: aqua;
 
+    background-image: url("../png/EDM_LP.png");
+    background-position: center;
+    background-size: cover;
 }
 
 .theme4 {
@@ -96,8 +98,9 @@
     height: 190px;
     bottom: 393px; 
     left: 868px;
-    background-color: aqua;
-
+    background-image: url("../png/classical_LP.png");
+    background-position: center;
+    background-size: cover;
 }
 
 .theme5 {
