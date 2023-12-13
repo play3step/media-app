@@ -53,7 +53,7 @@ export const musicData = [
     },
     {
         albume_title:'Alan-Walker',
-        albume_image:'../png/EDM_LP.png',
+        albume_image:'../png/edm_lp_1.png',
         songs:[
             {
                 audio: '../musics/Alan Walker Alone.mp3',

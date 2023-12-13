@@ -82,8 +82,8 @@
 
         if (themeId == 0) {
             listItem.append(`<div class="theme1-box">
-                <div>
-                    <span class="title">${formattedIndex}.  ${title}</span>
+                <div class="title">
+                    <span>${formattedIndex}.  ${title}</span>
                     <div class="theme1-spn">
                         Composed by 윤성현, 심재현<br>
 lyrics by 윤성현<br>
@@ -94,10 +94,26 @@ Arranged by 쏜애플(THORNAPPLE)
             listDiv.append(listItem);
 
 
-
         } else if (themeId == 1) {
 
+
+
         } else if (themeId == 2) {
+            if (i == 0) {
+                listItem.append(`
+                <div class="theme2-pos">
+                    <span class="title">${formattedIndex}. ${title}</span>
+                </div>
+            `);
+            } else {
+                // 첫 번째 요소가 아니라면 기존 theme2-box 내부에 새로운 내용을 추가
+                listItem.find('.theme2-pos').append(`
+                <div class ="theme2-box">
+                    <span class="title">${formattedIndex}. ${title}</span>
+                </div>
+            `);
+            }
+            listDiv.append(listItem);
 
         } else if (themeId == 3) {
 
@@ -152,7 +168,7 @@ Arranged by 쏜애플(THORNAPPLE)
 
                 if (song.title === current_title) {
                     console.log(song.title)
-                    $('.title').eq(j + 1).css('color', 'red');
+                    $('.title').eq(j + 1).css('color', '#ffffff');
                     break;
                 }
             }
@@ -279,7 +295,7 @@ Arranged by 쏜애플(THORNAPPLE)
             author = selectedSong.author;
             let newAudio = new Audio(selectedSong.audio);
             $('.title').css('color', '');
-            $('.title:contains("' + title + '")').css('color', 'red');
+            $('.title:contains("' + title + '")').css('color', '#ffffff');
             if (currentAudio) {
                 currentAudio.pause();
             }
