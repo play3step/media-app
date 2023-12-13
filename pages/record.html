@@ -19,6 +19,7 @@
                 <img src="../png/exit_button.png">
             </button>
             <div id="record_cover">
+                <div id ="lp"></div>
                 <div id="tone"></div>
                 <div id="tone_arm"></div>
             </div>
@@ -73,7 +74,7 @@
     $('.list_container').css("background-image", `url(${albumImage})`);
     let listDiv = $("#play_list");
     let listItem = $('<div class="list_item">');
-    // 재생 목록에 추가
+        
     for (let i = 0; i < currentAlbum.songs.length; i++) {
         let title = currentAlbum.songs[i].title;
         listItem.append('<h2 class="title">' + title + '</h2>');
@@ -81,13 +82,12 @@
     }
     $(document).ready(function () {
         let currentAudio = audio
+
         setInterval(function () {
-            // Update current time display
             let currentTime = Math.floor(currentAudio.currentTime);
             let total_time = Math.floor(currentAudio.duration);
             $('#current_time_display').text(formatTime(currentTime));
             $('#total_time_display').text(formatTime(total_time))
-            // Update progress bar
             let barWidth = $('#progress_bar').innerWidth();
             let indicator = $('#progress_indicator').innerWidth();
             let progressWidth = (barWidth * currentAudio.currentTime / currentAudio.duration) || 0;
@@ -112,8 +112,8 @@
 
             if (!toggleTonearm) {
                 $(this).css({ 'transform': 'rotateZ(45deg)' });
-                $(this).css({ 'left': '814px' });
-                $(this).css({ 'top': '6px' });
+                $(this).css({ 'left': '831px' });
+                $(this).css({ 'top': '28px' });
 
                 event.stopPropagation();
                 toggleTonearm = true;
@@ -121,7 +121,8 @@
                 btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
             } else {
                 $(this).css({ 'transform': 'rotateZ(0deg)' });
-                $(this).css({ 'left': '771px' });
+                $(this).css({ 'left': '788px' });
+                $(this).css({ 'top': '15px' });
                 event.stopPropagation();
                 toggleTonearm = false;
                 currentAudio.pause();
@@ -132,7 +133,6 @@
         $('#record_cover').click(function () {
             if (!isOpened) {
                 $(this).css({ 'transform': 'rotateX(180deg)' })
-                //$(this).css({'background':'royalblue'});
                 $("#tone_arm").css({ 'visibility': 'hidden' }).fadeOut(500);
                 $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
                 isOpened = true;
@@ -158,8 +158,8 @@
 
             if (currentAudio.paused) {
                 $("#tone_arm").css({ 'transform': 'rotateZ(45deg)' });
-                $("#tone_arm").css({ 'left': '814px' });
-                $("#tone_arm").css({ 'top': '6px' });
+                $("#tone_arm").css({ 'left': '831px' });
+                $("#tone_arm").css({ 'top': '28px' });
                 btnPlayImg.attr('src', '../png/stop_button.png').appendTo('#btn_play');
                 event.stopPropagation();
                 toggleTonearm = true;
@@ -167,7 +167,8 @@
                 getCurrentTitle(title);
             } else {
                 $("#tone_arm").css({ 'transform': 'rotateZ(0deg)' });
-                $("#tone_arm").css({ 'left': '771px' });
+                $("#tone_arm").css({ 'left': '788px' });
+                $("#tone_arm").css({ 'top': '15px' });
                 btnPlayImg.attr('src', '../png/play_arrow.png').appendTo('#btn_play');
                 event.stopPropagation();
                 toggleTonearm = false;

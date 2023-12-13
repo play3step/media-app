@@ -84,25 +84,24 @@
 #record_cover {
     background-image: url("../png/recordcover.png");
     z-index: 1;
-    width: 1002px;
-    height: 650px;
+    width: 1023px;
+    height: 698px;
     flex-shrink: 0;
-
     position: absolute;
-    left: 90px;
-    top: 105px;
+    left: 172px;
+    top: 72px;
     transform-origin: center top;
     transition: 2s;
 }
 
 #tone_arm {
     background-image: url("../png/tonearm.png");
-    width: 163px;
-    height: 536px;
+    width: 151px;
+    height: 583px;
     flex-shrink: 0;
     position: absolute;
-    left: 771px;
-    top: -11px;
+    left: 788px;
+    top: 13px;
     flex-shrink: 0;
     z-index: 2;
     transition: 1s;
@@ -113,10 +112,10 @@
     background-image: url("../png/tone.png");
     position: absolute;
     z-index: 2;
-    left: 771px;
-    top: -11px;
-    width: 163px;
-    height: 536px;
+    left: 788px;
+    top: 11px;
+    width: 151px;
+    height: 583px;
     flex-shrink: 0;
     transition: 1s;
 }
@@ -158,46 +157,59 @@
     font-weight: 400;
     line-height: normal;
 }
+
 #progress_bar_container {
     display: flex;
     align-items: center;
     width: 332px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 
 #progress_indicator {
-    background: #FFFFFF; 
+    background: #FFFFFF;
     height: 100%;
-    border-radius: 10px; 
-    width: 0%; 
-    position: absolute; 
+    border-radius: 10px;
+    width: 0%;
+    position: absolute;
 }
 
 #progress_indicator::after {
     content: '';
     position: absolute;
     top: -5px;
-    left: 100%; 
+    left: 100%;
     transform: translateX(-50%);
     width: 10px;
     height: 10px;
     background: white;
     border: 3px solid #d2d2d2;
     border-radius: 50%;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 #progress_bar {
     flex-grow: 1;
-    background: rgba(255, 255, 255, 0.50); 
+    background: rgba(255, 255, 255, 0.50);
     height: 5px;
-    border-radius: 10px; 
+    border-radius: 10px;
     position: relative;
-    margin: 0 15px; 
+    margin: 0 15px;
 }
 
-#current_time_display, #total_time_display {
-    color: #FFFFFF; /* 시간 텍스트 색상 */
+#current_time_display,
+#total_time_display {
+    color: #FFFFFF;
+    /* 시간 텍스트 색상 */
     font-size: 14px;
+}
+
+#lp {
+    background-image: url("../png/lp.png");
+    width: 629px;
+    height: 572.5px;
+    flex-shrink: 0;
+    position: inherit;
+    top: 21px;
+    left: 68px;
 }
