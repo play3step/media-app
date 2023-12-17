@@ -56,6 +56,8 @@
     bottom: 30px;
     left: 39.5%;
     border: none;
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+
 
 }
 
@@ -164,25 +166,82 @@
     height: 80px;
 }
 
-.fairy {
+.fairy1 {
     position: absolute;
     left: -100px;
     top: -70px;
     display: none;
-}
-.fairy img{
-    width: 160px;
-    height: 160px;
 }
 
-.shadow-fairy {
+.shadow-fairy1 {
     position: absolute;
     left: -100px;
     top: -70px;
     display: none;
-    
 }
-.shadow-fairy img{
+
+.fairy2 {
+    position: absolute;
+    left: 130px;
+    top: 40px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.shadow-fairy2 {
+    position: absolute;
+    left: 130px;
+    top: 40px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.fairy3 {
+    position: absolute;
+    left: 130px;
+    top: -50px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.shadow-fairy3 {
+    position: absolute;
+    left: 130px;
+    top: -50px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.fairy4 {
+    position: absolute;
+    left: -100px;
+    top: 0px;
+    display: none;
+}
+
+.shadow-fairy4 {
+    position: absolute;
+    left: -100px;
+    top: 0px;
+    display: none;
+}
+
+.fairy5 {
+    position: absolute;
+    left: -100px;
+    top: 70px;
+    display: none;
+}
+
+.shadow-fairy5 {
+    position: absolute;
+    left: -100px;
+    top: 70px;
+    display: none;
+}
+
+.fairy1 img, .fairy2 img, .fairy3 img, .fairy4 img, .fairy5 img,
+.shadow-fairy1 img, .shadow-fairy2 img, .shadow-fairy3 img, .shadow-fairy4 img, .shadow-fairy5 img {
     width: 160px;
     height: 160px;
 }
