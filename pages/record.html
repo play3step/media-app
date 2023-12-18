@@ -89,6 +89,7 @@
     let title = firstSong.title;
     let author = firstSong.author;
     let audio = new Audio(firstSong.audio);
+    
     let toggleTonearm = false;
 
 
@@ -127,7 +128,6 @@
                 </div>
             `);
             } else {
-                // 첫 번째 요소가 아니라면 기존 theme2-box 내부에 새로운 내용을 추가
                 listItem.find('.theme3-pos').append(`
                 <div class ="theme3-box">
                     <span class="title">${formattedIndex}. ${title}</span>
@@ -394,7 +394,6 @@
             newAudio.play();
             currentAudio = newAudio;
         }
-
     });
 
 

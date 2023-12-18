@@ -56,6 +56,8 @@
     bottom: 30px;
     left: 39.5%;
     border: none;
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+
 
 }
 
@@ -74,8 +76,8 @@
     background-position: center;
     background-size: cover;
     z-index: 1;
-
-
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+    box-shadow: none;
 }
 
 .theme2 {
@@ -86,10 +88,12 @@
     right: 672px;
 
     background-image: url("../png/발라드표지.png");
+
     background-position: center;
     background-size: cover;
     z-index: 1;
-
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+    box-shadow: none;
 
 }
 
@@ -101,10 +105,12 @@
     left: 493px;
 
     background-image: url("../png/이디엠표지.png");
+
     background-position: center;
     background-size: cover;
     z-index: 1;
-
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+    box-shadow: none;
 }
 
 .theme4 {
@@ -117,6 +123,8 @@
     background-position: center;
     background-size: cover;
     z-index: 1;
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+    box-shadow: none;
 }
 
 .theme5 {
@@ -129,7 +137,13 @@
     background-position: center;
     background-size: cover;
     z-index: 1;
+    transition: box-shadow 1s ease; /* 1초 동안 부드럽게 변화 */
+    box-shadow: none;
 
+}
+
+.theme1:hover, .theme2:hover, .theme3:hover, .theme4:hover, .theme5:hover {
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4), 0 0 15px 5px #FFA666; /* 마우스 오버 시 그림자 적용 */
 }
 
 #draggable li {
@@ -156,24 +170,82 @@
     height: 80px;
 }
 
-.fairy {
+.fairy1 {
     position: absolute;
     left: -100px;
     top: -70px;
     display: none;
-}
-.fairy img{
-    width: 160px;
-    height: 160px;
 }
 
-.shadow-fairy {
+.shadow-fairy1 {
     position: absolute;
     left: -100px;
     top: -70px;
     display: none;
 }
-.shadow-fairy img{
+
+.fairy2 {
+    position: absolute;
+    left: 130px;
+    top: 40px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.shadow-fairy2 {
+    position: absolute;
+    left: 130px;
+    top: 40px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.fairy3 {
+    position: absolute;
+    left: 130px;
+    top: -50px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.shadow-fairy3 {
+    position: absolute;
+    left: 130px;
+    top: -50px;
+    transform: scaleX(-1);
+    display: none;
+}
+
+.fairy4 {
+    position: absolute;
+    left: -100px;
+    top: 0px;
+    display: none;
+}
+
+.shadow-fairy4 {
+    position: absolute;
+    left: -100px;
+    top: 0px;
+    display: none;
+}
+
+.fairy5 {
+    position: absolute;
+    left: -100px;
+    top: 70px;
+    display: none;
+}
+
+.shadow-fairy5 {
+    position: absolute;
+    left: -100px;
+    top: 70px;
+    display: none;
+}
+
+.fairy1 img, .fairy2 img, .fairy3 img, .fairy4 img, .fairy5 img,
+.shadow-fairy1 img, .shadow-fairy2 img, .shadow-fairy3 img, .shadow-fairy4 img, .shadow-fairy5 img {
     width: 160px;
     height: 160px;
 }
