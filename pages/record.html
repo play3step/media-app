@@ -307,7 +307,6 @@
                 $('#record_cover').css({ 'transform': 'rotateX(180deg)' })
                 $("#tone_arm").css({ 'visibility': 'hidden' }).fadeOut(500);
                 $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
-                $("#tone").css({ 'visibility': 'hidden' }).fadeOut(500);
                 $("#btn_fairy_text").text("레코더판 보기");
                 isOpened = true;
                 
@@ -318,8 +317,6 @@
                     $("#tone_arm, #tone").css({ 'visibility': 'visible' }).fadeIn(500);
                 }, 500);
                 $("#btn_fairy_text").text("요정 관람하기");
-
-
                 isOpened = false;
             }
         }).hover(function () {
