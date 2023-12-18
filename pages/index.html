@@ -91,6 +91,17 @@
         var audioFile = $(this).data("audio");
         currentAudio.src = audioFile;
         currentAudio.currentTime = 70;
+        currentAudio.volume = 0;
+
+        let fadeInterval = setInterval(function () { // 볼륨 페이드 인 함수
+            //console.log(currentAudio.volume)
+            if (currentAudio.volume > 0.95) {
+                currentAudio.volume = 1;
+                clearInterval(fadeInterval);
+            } else {
+                currentAudio.volume += 0.05;
+            }
+        }, 200);
         currentAudio.play();
 
         const themeNumber = $(this).attr('class').match(/theme(\d)/)[1]; // 테마 번호 추출
