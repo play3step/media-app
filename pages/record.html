@@ -43,9 +43,7 @@
 
             <div id="controller_box">
                 <div id="current_music">
-                    <div id="current_albume">
-
-                    </div>
+                    <div id="current_albume"></div>
                     <div id="current_song">
                         <div id="current_title"></div>
                         <div id="author"></div>
@@ -59,7 +57,7 @@
                         </div>
                         <span id="total_time_display">-2:56</span>
                     </div>
-                    <div style="display: flex; flex-direction: row;">
+                    <div id = "btn_container" style="display: flex; flex-direction: row;">
                         <button id="btn_prev">
                             <img src="../png/skip_previous.png">
                         </button>
@@ -324,6 +322,7 @@
         }, function () {
             $('#record_cover').css({ 'top': '72px' });
         });
+
         $(".list_container").animate({
             'left': '1240px',
             'rotate': '5deg'
